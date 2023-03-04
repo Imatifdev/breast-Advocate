@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-import 'auth/loginPage.dart';
-import 'dashboard.dart';
+import '../auth/loginPage.dart';
+import '../dashboard.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
