@@ -9,6 +9,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:lottie/lottie.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:pinkgirl/screens/auth/signuppage.dart';
+import 'package:get/get.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -258,10 +259,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                               'Create a new Account',
                               2,
                               () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Signup()));
+                                Get.to(Signup());
                                 HapticFeedback.lightImpact();
                                 Fluttertoast.showToast(
                                     msg: 'Create a new account button pressed');

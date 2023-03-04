@@ -5,7 +5,9 @@ import 'dart:ui';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import '../dashboard.dart';
 import 'loginPage.dart';
+import 'package:get/get.dart';
 
 class Signup extends StatefulWidget {
   @override
@@ -208,8 +210,10 @@ class _SignupState extends State<Signup> with TickerProviderStateMixin {
                           component2(
                             'Signup',
                             2,
-                            () {
+                            () async {
                               signupmethod();
+                              await Get.to(DashBoard());
+
                               HapticFeedback.lightImpact();
                               Fluttertoast.showToast(
                                   msg: 'Create a new account button pressed');
@@ -233,10 +237,7 @@ class _SignupState extends State<Signup> with TickerProviderStateMixin {
                               ),
                               GestureDetector(
                                 onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => LoginPage()));
+                                  Get.to(LoginPage());
                                 },
                                 child: Text(
                                   "Login",
