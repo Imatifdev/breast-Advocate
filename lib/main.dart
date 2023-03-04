@@ -6,6 +6,8 @@ import 'package:quizapp2/auth/loginPage.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
 
+import 'controller/index_controller.dart';
+
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -16,18 +18,17 @@ class MainPage extends StatelessWidget {
   final navigatorkey = GlobalKey<NavigatorState>();
   @override
   Widget build(BuildContext context) {
-    // return MultiProvider(
-    //   providers: [
-    //   //  ChangeNotifierProvider<IndexController>(
-    //    //   create: (_) => IndexController(),
-    //     ),
-    //   ],
-    //child:
-    return GetMaterialApp(
-      navigatorKey: navigatorkey,
-      home: Scaffold(),
-      debugShowCheckedModeBanner: false,
-      // ),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<IndexController>(
+          create: (_) => IndexController(),
+        ),
+      ],
+      child: GetMaterialApp(
+        navigatorKey: navigatorkey,
+        home: Scaffold(),
+        debugShowCheckedModeBanner: false,
+      ),
     );
   }
 }
