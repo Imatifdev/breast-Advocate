@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, unnecessary_new
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, unnecessary_new, sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
 
@@ -10,8 +10,10 @@ import '../utilities/Mytheme.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:get/get.dart';
 
+import 'auth/loginPage.dart';
 import 'cancerscreens/excerise.dart';
 import 'cancerscreens/intro.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class DashBoard extends StatelessWidget {
   final makeBottom = Container(
@@ -45,6 +47,23 @@ class DashBoard extends StatelessWidget {
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser;
     return Scaffold(
+      drawer: Drawer(
+        child: ElevatedButton(
+            onPressed: () {
+              FirebaseAuth.instance.signOut();
+            },
+            child: Text("Signout")),
+      ),
+      appBar: AppBar(
+        iconTheme: IconThemeData(color: CustomTheme.pinkthemecolor),
+        title: Text(
+          "Pink Girl",
+          style: TextStyle(fontSize: 24, color: CustomTheme.pinkthemecolor),
+        ),
+        centerTitle: true,
+        backgroundColor: Colors.white70,
+        elevation: 0,
+      ),
       // bottomNavigationBar: makeBottom,
       body: SingleChildScrollView(
         child: Column(

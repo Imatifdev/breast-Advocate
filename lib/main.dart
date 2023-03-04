@@ -26,7 +26,7 @@ class MainPage extends StatelessWidget {
       ],
       child: GetMaterialApp(
         navigatorKey: navigatorkey,
-        home: DashBoard(),
+        home: SplashScreen(),
         debugShowCheckedModeBanner: false,
       ),
     );

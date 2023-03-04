@@ -10,14 +10,14 @@ import 'home_screen.dart';
 import 'package:flutter_animated_button/flutter_animated_button.dart';
 import 'package:swipeable_button_view/swipeable_button_view.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class StartQuiz extends StatefulWidget {
+  const StartQuiz({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<StartQuiz> createState() => _StartQuizState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _StartQuizState extends State<StartQuiz> {
   bool isFinished = false;
 
   @override

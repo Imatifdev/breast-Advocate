@@ -5,6 +5,7 @@ import 'package:lottie/lottie.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'auth/loginPage.dart';
+import 'auth/signuppage.dart';
 import 'dashboard.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -39,7 +40,7 @@ class _SplashScreenState extends State<SplashScreen> {
               } else if (snapshot.hasData) {
                 return DashBoard();
               } else {
-                return LoginPage();
+                return Signup();
               }
             },
           ),

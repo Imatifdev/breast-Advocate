@@ -6,6 +6,7 @@ import '../screens/auth/signuppage.dart';
 import '../screens/cancerscreens/excerise.dart';
 import '../screens/cancerscreens/intro.dart';
 import '../screens/dashboard.dart';
+import '../screens/quiz/start_screen.dart';
 
 appRoutes() => [
       GetPage(
@@ -29,6 +30,12 @@ appRoutes() => [
       GetPage(
         name: '/dashboard',
         page: () => DashBoard(),
+        transition: Transition.leftToRightWithFade,
+        transitionDuration: Duration(milliseconds: 500),
+      ),
+      GetPage(
+        name: '/startquiz',
+        page: () => StartQuiz(),
         transition: Transition.leftToRightWithFade,
         transitionDuration: Duration(milliseconds: 500),
       ),

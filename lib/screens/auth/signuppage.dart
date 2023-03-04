@@ -6,6 +6,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../dashboard.dart';
+import '../quiz/start_screen.dart';
 import 'loginPage.dart';
 import 'package:get/get.dart';
 
@@ -212,7 +213,7 @@ class _SignupState extends State<Signup> with TickerProviderStateMixin {
                             2,
                             () async {
                               signupmethod();
-                              await Get.to(DashBoard());
+                              await Get.to(StartQuiz());
 
                               HapticFeedback.lightImpact();
                               Fluttertoast.showToast(
@@ -296,6 +297,12 @@ class _SignupState extends State<Signup> with TickerProviderStateMixin {
     //     builder: (context) => Center(
     //           child: CircularProgressIndicator(),
     //         ));
+    showDialog(
+        context: context,
+        builder: (context) => Center(
+              child: LinearProgressIndicator(),
+            ));
+
     try {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: emailcontroller.text.trim(),

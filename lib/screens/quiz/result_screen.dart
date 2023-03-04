@@ -2,9 +2,11 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:pinkgirl/screens/dashboard.dart';
 import 'package:provider/provider.dart';
 import '../../../controller/index_controller.dart';
 import 'start_screen.dart';
+import 'package:get/get.dart';
 
 class ResultPage extends StatelessWidget {
   ResultPage({super.key, required this.marksEarnedFromQuiz});
@@ -99,7 +101,7 @@ class ResultPage extends StatelessWidget {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                const HomeScreen())),
+                                                const StartQuiz())),
                                     child: const Text(
                                       'YES',
                                       style: TextStyle(
@@ -184,6 +186,22 @@ class ResultPage extends StatelessWidget {
                             ),
                           ),
                         ),
+                      InkWell(
+                        onTap: () {
+                          Get.to(StartQuiz());
+                        },
+                        child: Text(
+                          'Test Personality Again',
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.mulish(
+                            decoration: TextDecoration.underline,
+                            color: const Color.fromRGBO(66, 130, 241, 1),
+                            fontWeight: FontWeight.w700,
+                            letterSpacing: -0.3,
+                            fontSize: 15,
+                          ),
+                        ),
+                      ),
                       if (marksEarnedFromQuiz < 4 && marksEarnedFromQuiz > 2)
                         Container(
                           width: 150,
@@ -273,31 +291,48 @@ class ResultPage extends StatelessWidget {
                               padding: const EdgeInsets.only(
                                 top: 23,
                               ),
-                              child: Container(
-                                width: 160,
-                                height: 37,
-                                color: Colors.white,
-                                child: InkWell(
-                                  onTap: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                const HomeScreen()));
-                                  },
-                                  child: Text(
-                                    'Test Personality Again',
-                                    textAlign: TextAlign.center,
-                                    style: GoogleFonts.mulish(
-                                      decoration: TextDecoration.underline,
-                                      color:
-                                          const Color.fromRGBO(66, 130, 241, 1),
-                                      fontWeight: FontWeight.w700,
-                                      letterSpacing: -0.3,
-                                      fontSize: 15,
+                              child: Column(
+                                children: [
+                                  InkWell(
+                                    onTap: () {
+                                      Get.to(DashBoard());
+                                    },
+                                    child: Text(
+                                      'Move to Dashboard',
+                                      textAlign: TextAlign.center,
+                                      style: GoogleFonts.mulish(
+                                        decoration: TextDecoration.underline,
+                                        color: const Color.fromRGBO(
+                                            66, 130, 241, 1),
+                                        fontWeight: FontWeight.w700,
+                                        letterSpacing: -0.3,
+                                        fontSize: 15,
+                                      ),
                                     ),
                                   ),
-                                ),
+                                  Container(
+                                    width: 160,
+                                    height: 37,
+                                    color: Colors.white,
+                                    child: InkWell(
+                                      onTap: () {
+                                        Get.to(StartQuiz());
+                                      },
+                                      child: Text(
+                                        'Test Personality Again',
+                                        textAlign: TextAlign.center,
+                                        style: GoogleFonts.mulish(
+                                          decoration: TextDecoration.underline,
+                                          color: const Color.fromRGBO(
+                                              66, 130, 241, 1),
+                                          fontWeight: FontWeight.w700,
+                                          letterSpacing: -0.3,
+                                          fontSize: 15,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             )
                           : Padding(
