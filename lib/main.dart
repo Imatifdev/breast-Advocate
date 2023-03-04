@@ -6,8 +6,6 @@ import 'package:quizapp2/auth/loginPage.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
 
-import 'intro.dart';
-
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
