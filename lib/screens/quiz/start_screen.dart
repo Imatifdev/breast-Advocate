@@ -35,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               title: const Text('Quit Quiz?'),
               content: const Text(
-                'Are you sure you want exit!',
+                'Are you sure you want exit!!',
                 textAlign: TextAlign.left,
                 style: TextStyle(color: Colors.grey, fontSize: 16),
               ),
