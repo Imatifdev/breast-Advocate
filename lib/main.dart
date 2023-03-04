@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors, depend_on_referenced_packages, unused_import
 
 import 'package:flutter/material.dart';
+import 'package:pinkgirl/auth/loginPage.dart';
 import 'package:provider/provider.dart';
-import 'package:quizapp2/auth/loginPage.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
 
@@ -26,7 +26,7 @@ class MainPage extends StatelessWidget {
       ],
       child: GetMaterialApp(
         navigatorKey: navigatorkey,
-        home: Scaffold(),
+        home: LoginPage(),
         debugShowCheckedModeBanner: false,
       ),
     );

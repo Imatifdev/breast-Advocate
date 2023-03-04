@@ -7,7 +7,7 @@ import 'dart:ui';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:lottie/lottie.dart';
-import 'package:quizapp2/auth/signuppage.dart';
+import 'package:pinkgirl/auth/signuppage.dart';
 
 class LoginPage extends StatefulWidget {
   @override

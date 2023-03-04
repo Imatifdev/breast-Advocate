@@ -2,10 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:quizapp2/view/screens/quiz/start_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-import 'auth/loginPage.dart';
+import '../../auth/loginPage.dart';
 import 'dashboard.dart';
 
 class SplashScreen extends StatefulWidget {
