@@ -3,12 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:quizapp2/auth/loginPage.dart';
-import 'package:quizapp2/view/screens/dashboard.dart';
-import 'package:quizapp2/view/screens/quiz/start_screen.dart';
-import 'controller/index_controller.dart';
-import 'view/screens/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
+
+import 'intro.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,7 +27,7 @@ class MainPage extends StatelessWidget {
     //child:
     return GetMaterialApp(
       navigatorKey: navigatorkey,
-      home: LoginPage(),
+      home: Scaffold(),
       debugShowCheckedModeBanner: false,
       // ),
     );
