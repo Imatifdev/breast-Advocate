@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:lottie/lottie.dart';
-import 'package:quizapp2/view/screens/cancerscreens/excerise.dart';
 
 import '../../models/imageslist.dart';
 import '../../utilities/Mytheme.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:get/get.dart';
 
+import 'cancerscreens/excerise.dart';
 import 'cancerscreens/intro.dart';
 
 class DashBoard extends StatelessWidget {
