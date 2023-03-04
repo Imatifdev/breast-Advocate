@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:provider/provider.dart';
-import '../../../../controller/index_controller.dart';
+import '../../../controller/index_controller.dart';
 import 'start_screen.dart';
 
 class ResultPage extends StatelessWidget {

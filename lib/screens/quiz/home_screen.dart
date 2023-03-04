@@ -5,16 +5,16 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
-import '../controller/index_controller.dart';
-import '../models/list_of_answers.dart';
-import '../models/list_of_questions.dart';
-import '../utilities/Mytheme.dart';
-import '../Widgets/choose_an_answer_box.dart';
-import '../Widgets/option_box.dart';
-import '../Widgets/question_answer_divider.dart';
-import '../Widgets/question_box.dart';
-import '../Widgets/question_mark_icon.dart';
-import '../Widgets/question_number_index.dart';
+import '../../controller/index_controller.dart';
+import '../../models/list_of_answers.dart';
+import '../../models/list_of_questions.dart';
+import '../../utilities/Mytheme.dart';
+import '../../Widgets/choose_an_answer_box.dart';
+import '../../Widgets/option_box.dart';
+import '../../Widgets/question_answer_divider.dart';
+import '../../Widgets/question_box.dart';
+import '../../Widgets/question_mark_icon.dart';
+import '../../Widgets/question_number_index.dart';
 import 'result_screen.dart';
 
 class FirstPage extends StatelessWidget {

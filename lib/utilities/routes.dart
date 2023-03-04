@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 
-import '../cancerscreens/excerise.dart';
-import '../view/screens/cancerscreens/intro.dart';
+import '../screens/cancerscreens/excerise.dart';
+import '../screens/cancerscreens/intro.dart';
 
 appRoutes() => [
       GetPage(

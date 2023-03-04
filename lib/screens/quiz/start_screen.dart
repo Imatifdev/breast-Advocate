@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
-import '../controller/index_controller.dart';
+import '../../controller/index_controller.dart';
 import 'home_screen.dart';
 import 'package:flutter_animated_button/flutter_animated_button.dart';
 import 'package:swipeable_button_view/swipeable_button_view.dart';

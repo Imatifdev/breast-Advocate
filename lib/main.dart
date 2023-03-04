@@ -1,10 +1,10 @@
 // ignore_for_file: prefer_const_constructors, depend_on_referenced_packages, unused_import
 
 import 'package:flutter/material.dart';
-import 'package:pinkgirl/view/screens/dashboard.dart';
+import 'package:pinkgirl/screens/dashboard.dart';
 import 'package:provider/provider.dart';
 import 'controller/index_controller.dart';
-import 'view/screens/splash_screen.dart';
+import 'screens/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
 
