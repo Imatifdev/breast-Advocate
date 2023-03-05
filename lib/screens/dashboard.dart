@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:lottie/lottie.dart';
+import 'package:pinkgirl/screens/quiz/start_screen.dart';
 
 import '../models/imageslist.dart';
 import '../utilities/Mytheme.dart';
@@ -188,7 +189,9 @@ class DashBoard extends StatelessWidget {
                             title: 'Self Examination',
                             desc: "Read about Symptoms",
                             image: "Assets/4.png",
-                            onTap: () {},
+                            onTap: () {
+                              Get.to(StartQuiz());
+                            },
                           ),
                           MyCard(
                             title: 'Excercise',

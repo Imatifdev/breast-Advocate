@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 
 import '../../utilities/Mytheme.dart';
+import 'package:action_slider/action_slider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Symtoms extends StatelessWidget {
   const Symtoms({super.key});
@@ -50,7 +52,7 @@ class Symtoms extends StatelessWidget {
                   Icons.arrow_left,
                   size: 30,
                 ),
-                title: Text(
+                subtitle: Text(
                   "A new lump or thickening in or near the breast or in the armpit.",
                   style: TextStyle(
                       fontSize: 18, color: Colors.black.withOpacity(0.7)),
@@ -61,14 +63,14 @@ class Symtoms extends StatelessWidget {
                   Icons.arrow_left,
                   size: 30,
                 ),
-                title: Text(
+                subtitle: Text(
                   "A change in the size or shape of the breast.",
                   style: TextStyle(
                       fontSize: 18, color: Colors.black.withOpacity(0.7)),
                 ),
               ),
               ListTile(
-                title: Icon(
+                leading: Icon(
                   Icons.arrow_left,
                   size: 30,
                 ),
@@ -79,7 +81,7 @@ class Symtoms extends StatelessWidget {
                 ),
               ),
               ListTile(
-                title: Icon(
+                leading: Icon(
                   Icons.arrow_left,
                   size: 30,
                 ),
@@ -90,7 +92,7 @@ class Symtoms extends StatelessWidget {
                 ),
               ),
               ListTile(
-                title: Icon(
+                leading: Icon(
                   Icons.arrow_left,
                   size: 30,
                 ),
@@ -101,7 +103,7 @@ class Symtoms extends StatelessWidget {
                 ),
               ),
               ListTile(
-                title: Icon(
+                leading: Icon(
                   Icons.arrow_left,
                   size: 30,
                 ),
@@ -112,7 +114,7 @@ class Symtoms extends StatelessWidget {
                 ),
               ),
               ListTile(
-                title: Icon(
+                leading: Icon(
                   Icons.arrow_left,
                   size: 30,
                 ),
@@ -128,10 +130,55 @@ class Symtoms extends StatelessWidget {
                 height: MediaQuery.of(context).size.height * .5,
                 width: MediaQuery.of(context).size.width,
               ),
+              Center(
+                child: ActionSlider.custom(
+                  toggleMargin: EdgeInsets.zero,
+                  width: 300.0,
+                  toggleWidth: 60.0,
+                  height: 60.0,
+                  backgroundColor: Colors.pink.shade100,
+                  foregroundChild: Container(
+                      decoration: const BoxDecoration(
+                        color: Colors.pink,
+                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                      ),
+                      child:
+                          const Icon(Icons.check_rounded, color: Colors.white)),
+                  foregroundBuilder: (context, state, child) => child!,
+                  backgroundChild: Center(
+                      child: Text(
+                    'Slide to learn more symtoms...',
+                  )),
+                  backgroundBuilder: (context, state, child) => ClipRect(
+                      child: OverflowBox(
+                          maxWidth: state.standardSize.width,
+                          maxHeight: state.toggleSize.height,
+                          minWidth: state.standardSize.width,
+                          minHeight: state.toggleSize.height,
+                          child: child!)),
+                  backgroundBorderRadius: BorderRadius.circular(5.0),
+                  action: (controller) async {
+                    controller.loading(); //starts loading animation
+                    await Future.delayed(
+                        const Duration(seconds: 3), _launchURL);
+                    controller.success(); //starts success animation
+                    await Future.delayed(const Duration(seconds: 1));
+                    controller.reset(); //resets the slider
+                  },
+                ),
+              ),
             ],
           ),
         ),
       ),
     );
   }
+}
+
+_launchURL() async {
+  const url =
+      "https://www.cancercenter.com/cancer-types/breast-cancer/symptoms";
+  final Uri _url = Uri.parse(url);
+
+  await launchUrl(_url, mode: LaunchMode.externalApplication);
 }
