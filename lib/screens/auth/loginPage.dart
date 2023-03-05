@@ -309,7 +309,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
             ),
             child: Text(
               string,
-              style: TextStyle(color: Colors.black.withOpacity(.8)),
+              style: TextStyle(color: Colors.black.withOpacity(.7)),
             ),
           ),
         ),
