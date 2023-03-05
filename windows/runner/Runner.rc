@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "quizapp2" "\0"
+            VALUE "FileDescription", "pinkgirl" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "quizapp2" "\0"
+            VALUE "InternalName", "pinkgirl" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2022 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "quizapp2.exe" "\0"
-            VALUE "ProductName", "quizapp2" "\0"
+            VALUE "OriginalFilename", "pinkgirl.exe" "\0"
+            VALUE "ProductName", "pinkgirl" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END
