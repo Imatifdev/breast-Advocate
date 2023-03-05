@@ -239,37 +239,37 @@ class FirstPage extends StatelessWidget {
 
   void marksForCorrectAnswers() {
     if (indexForQuestionNumber == 1) {
-      if (selectedOption == 1) {
-        marksObtainedFromCorrectAnswer++;
-      }
-    }
-    if (indexForQuestionNumber == 2) {
-      if (selectedOption == 3) {
-        marksObtainedFromCorrectAnswer++;
-      }
-    }
-    if (indexForQuestionNumber == 3) {
-      if (selectedOption == 2) {
-        marksObtainedFromCorrectAnswer++;
-      }
-    }
-    if (indexForQuestionNumber == 4) {
-      if (selectedOption == 2) {
-        marksObtainedFromCorrectAnswer++;
-      }
-    }
-    if (indexForQuestionNumber == 5) {
-      if (selectedOption == 1) {
-        marksObtainedFromCorrectAnswer++;
-      }
-    }
-    if (indexForQuestionNumber == 6) {
       if (selectedOption == 4) {
         marksObtainedFromCorrectAnswer++;
       }
     }
-    if (indexForQuestionNumber == 7) {
+    if (indexForQuestionNumber == 2) {
+      if (selectedOption == 4) {
+        marksObtainedFromCorrectAnswer++;
+      }
+    }
+    if (indexForQuestionNumber == 3) {
+      if (selectedOption == 4) {
+        marksObtainedFromCorrectAnswer++;
+      }
+    }
+    if (indexForQuestionNumber == 4) {
       if (selectedOption == 1) {
+        marksObtainedFromCorrectAnswer++;
+      }
+    }
+    if (indexForQuestionNumber == 5) {
+      if (selectedOption == 2) {
+        marksObtainedFromCorrectAnswer++;
+      }
+    }
+    if (indexForQuestionNumber == 6) {
+      if (selectedOption == 1) {
+        marksObtainedFromCorrectAnswer++;
+      }
+    }
+    if (indexForQuestionNumber == 7) {
+      if (selectedOption == 3) {
         marksObtainedFromCorrectAnswer++;
       }
     }
@@ -279,12 +279,12 @@ class FirstPage extends StatelessWidget {
       }
     }
     if (indexForQuestionNumber == 9) {
-      if (selectedOption == 3) {
+      if (selectedOption == 2) {
         marksObtainedFromCorrectAnswer++;
       }
     }
     if (indexForQuestionNumber == 10) {
-      if (selectedOption == 4) {
+      if (selectedOption == 3) {
         marksObtainedFromCorrectAnswer++;
       }
     }

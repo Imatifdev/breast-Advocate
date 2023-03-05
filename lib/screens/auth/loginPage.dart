@@ -156,119 +156,125 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Expanded(
-                      flex: 5,
+                    Padding(
+                      padding: EdgeInsets.only(top: size.height * .1),
+                      // child: Lottie.asset(
+                      //   'Assets/auth.json',
+                      //   width: 350,
+                      //   height: 350,
+                      // ),
                       child: Padding(
-                        padding: EdgeInsets.only(top: size.height * .1),
-                        // child: Lottie.asset(
-                        //   'Assets/auth.json',
-                        //   width: 350,
-                        //   height: 350,
-                        // ),
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 30),
-                          child: Text(
-                            'Welcome Back!\nHave a Good Day',
-                            style: TextStyle(
-                              color: Colors.white.withOpacity(.7),
-                              fontSize: 40,
-                              fontWeight: FontWeight.bold,
-                              letterSpacing: 1,
-                              wordSpacing: 4,
-                            ),
+                        padding: const EdgeInsets.only(left: 30),
+                        child: Text(
+                          'Welcome Back!\nHave a Good Day',
+                          style: TextStyle(
+                            color: Colors.white.withOpacity(.7),
+                            fontSize: 40,
+                            fontWeight: FontWeight.bold,
+                            letterSpacing: 1,
+                            wordSpacing: 4,
                           ),
                         ),
                       ),
+                    ),
+                    SizedBox(
+                      height: 70,
                     ),
                     Form(
                       key: formkey,
-                      child: Expanded(
-                        flex: 7,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            MyformField(
-                              validator: (String? email) {
-                                if (email!.isEmpty) {
-                                  return 'enter email';
-                                }
-                              },
-                              isEmail: true,
-                              isPassword: false,
-                              controller: emailcontroller,
-                              icon: Icons.email_outlined,
-                              hintText: 'Email...',
-                            ),
-                            MyformField(
-                              validator: (String? password) {
-                                if (password!.isEmpty) {
-                                  return 'Password empty';
-                                } else if (password.length < 6) {
-                                  return 'PasswordShort';
-                                }
-                                return null;
-                              },
-                              isEmail: false,
-                              isPassword: true,
-                              controller: passcontroller,
-                              icon: Icons.lock_outline,
-                              hintText: 'Password...',
-                            ),
-
-                            // component1(
-                            //     Icons.email_outlined, 'Email...', false, true),
-                            // component1(
-                            //     Icons.lock_outline, 'Password...', true, false),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                component2(
-                                  'LOGIN',
-                                  2.58,
-                                  () {
-                                    siginmethod();
-                                    HapticFeedback.lightImpact();
-                                    Fluttertoast.showToast(
-                                        msg: 'Login button pressed');
-                                  },
-                                ),
-                                SizedBox(width: size.width / 20),
-                                component2(
-                                  'Forgotten password!',
-                                  2.58,
-                                  () {
-                                    HapticFeedback.lightImpact();
-                                    Fluttertoast.showToast(
-                                        msg:
-                                            'Forgotten password button pressed');
-                                  },
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 6,
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Center(
-                            child: component2(
-                              'Create a new Account',
-                              2,
-                              () {
-                                Get.to(Signup());
-                                HapticFeedback.lightImpact();
-                                Fluttertoast.showToast(
-                                    msg: 'Create a new account button pressed');
-                              },
-                            ),
+                          MyformField(
+                            validator: (String? email) {
+                              if (email!.isEmpty) {
+                                return 'enter email';
+                              }
+                            },
+                            isEmail: true,
+                            isPassword: false,
+                            controller: emailcontroller,
+                            icon: Icons.email_outlined,
+                            hintText: 'Email...',
                           ),
-                          SizedBox(height: size.height * .05),
+
+                          SizedBox(
+                            height: 40,
+                          ),
+                          MyformField(
+                            validator: (String? password) {
+                              if (password!.isEmpty) {
+                                return 'Password empty';
+                              } else if (password.length < 6) {
+                                return 'PasswordShort';
+                              }
+                              return null;
+                            },
+                            isEmail: false,
+                            isPassword: true,
+                            controller: passcontroller,
+                            icon: Icons.lock_outline,
+                            hintText: 'Password...',
+                          ),
+
+                          SizedBox(
+                            height: 40,
+                          ),
+
+                          // component1(
+                          //     Icons.email_outlined, 'Email...', false, true),
+                          // component1(
+                          //     Icons.lock_outline, 'Password...', true, false),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              component2(
+                                'LOGIN',
+                                2.58,
+                                () {
+                                  siginmethod();
+                                  HapticFeedback.lightImpact();
+                                  Fluttertoast.showToast(
+                                      msg: 'Login button pressed');
+                                },
+                              ),
+                              SizedBox(width: size.width / 20),
+                              component2(
+                                'Forgotten password!',
+                                2.58,
+                                () {
+                                  HapticFeedback.lightImpact();
+                                  Fluttertoast.showToast(
+                                      msg: 'Forgotten password button pressed');
+                                },
+                              ),
+                            ],
+                          ),
+                          Lottie.asset(
+                            'Assets/auth.json',
+                            width: 200,
+                            height: 200,
+                          ),
                         ],
                       ),
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Center(
+                          child: component2(
+                            'Create a new Account',
+                            2,
+                            () {
+                              Get.to(Signup());
+                              HapticFeedback.lightImpact();
+                              Fluttertoast.showToast(
+                                  msg: 'Create a new account button pressed');
+                            },
+                          ),
+                        ),
+                        SizedBox(height: size.height * .05),
+                      ],
                     ),
                   ],
                 ),

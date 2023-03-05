@@ -67,7 +67,7 @@ class OptionBox extends StatelessWidget {
               optionParameter[indexForQuestionNumber],
               textAlign: TextAlign.left,
               style: GoogleFonts.mulish(
-                  fontWeight: FontWeight.w800,
+                  fontWeight: FontWeight.w400,
                   fontSize: 18,
                   letterSpacing: -0.3,
                   color: Colors.black),

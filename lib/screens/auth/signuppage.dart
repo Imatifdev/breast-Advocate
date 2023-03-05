@@ -185,116 +185,119 @@ class _SignupState extends State<Signup> with TickerProviderStateMixin {
                     ),
                     Expanded(
                       flex: 8,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          MyformField(
-                            validator: (String? email) {
-                              if (email!.isEmpty) {
-                                return 'enter name';
-                              }
-                            },
-                            isEmail: true,
-                            isPassword: false,
-                            controller: name,
-                            icon: Icons.person,
-                            hintText: 'Name',
-                          ),
-                          MyformField(
-                            validator: (String? email) {
-                              if (email!.isEmpty) {
-                                return 'enter email';
-                              }
-                            },
-                            isEmail: true,
-                            isPassword: false,
-                            controller: emailcontroller,
-                            icon: Icons.email_outlined,
-                            hintText: 'Email...',
-                          ),
-                          MyformField(
-                            validator: (String? pass) {
-                              if (pass!.length < 8) {
-                                return 'enter 8 digits';
-                              }
-                            },
-                            isEmail: false,
-                            isPassword: true,
-                            controller: passcontroller,
-                            icon: Icons.lock_outline,
-                            hintText: 'Password...',
-                          ),
-                          component2(
-                            'Signup',
-                            2,
-                            () async {
-                              signupmethod();
-                              await Get.to(StartQuiz());
+                      child: Form(
+                        key: formkey,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            MyformField(
+                              validator: (String? email) {
+                                if (email!.isEmpty) {
+                                  return 'enter name';
+                                }
+                              },
+                              isEmail: true,
+                              isPassword: false,
+                              controller: name,
+                              icon: Icons.person,
+                              hintText: 'Name',
+                            ),
+                            MyformField(
+                              validator: (String? email) {
+                                if (email!.isEmpty) {
+                                  return 'enter email';
+                                }
+                              },
+                              isEmail: true,
+                              isPassword: false,
+                              controller: emailcontroller,
+                              icon: Icons.email_outlined,
+                              hintText: 'Email...',
+                            ),
+                            MyformField(
+                              validator: (String? pass) {
+                                if (pass!.length < 8) {
+                                  return 'enter 8 digits';
+                                }
+                              },
+                              isEmail: false,
+                              isPassword: true,
+                              controller: passcontroller,
+                              icon: Icons.lock_outline,
+                              hintText: 'Password...',
+                            ),
+                            component2(
+                              'Signup',
+                              2,
+                              () async {
+                                signupmethod();
+                                await Get.to(StartQuiz());
 
-                              HapticFeedback.lightImpact();
-                              Fluttertoast.showToast(
-                                  msg: 'Create a new account button pressed');
-                            },
-                          ),
+                                HapticFeedback.lightImpact();
+                                Fluttertoast.showToast(
+                                    msg: 'Create a new account button pressed');
+                              },
+                            ),
 
-                          // component1(
-                          //     Icons.email_outlined, 'Email...', false, true),
-                          // component1(
-                          //     Icons.lock_outline, 'Password...', true, false),
+                            // component1(
+                            //     Icons.email_outlined, 'Email...', false, true),
+                            // component1(
+                            //     Icons.lock_outline, 'Password...', true, false),
 
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Text(
-                                "Already Have an Account?",
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    color: Colors.white.withOpacity(.7),
-                                    fontWeight: FontWeight.normal),
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  Get.to(LoginPage());
-                                },
-                                child: Text(
-                                  "Login",
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Text(
+                                  "Already Have an Account?",
                                   style: TextStyle(
-                                      decorationStyle:
-                                          TextDecorationStyle.solid,
-                                      fontStyle: FontStyle.italic,
-                                      fontSize: 23,
+                                      fontSize: 20,
                                       color: Colors.white.withOpacity(.7),
-                                      fontWeight: FontWeight.bold),
+                                      fontWeight: FontWeight.normal),
                                 ),
-                              ),
-                            ],
-                          ),
-                          // Row(
-                          //   mainAxisAlignment: MainAxisAlignment.center,
-                          //   children: [
-                          //     component2(
-                          //       'LOGIN',
-                          //       2.58,
-                          //       () {
-                          //         siginmethod();
-                          //         HapticFeedback.lightImpact();
-                          //         Fluttertoast.showToast(
-                          //             msg: 'Login button pressed');
-                          //       },
-                          //     ),
-                          //     SizedBox(width: size.width / 20),
-                          //     component2(
-                          //       'Forgotten password!',
-                          //       2.58,
-                          //       () {
-                          //         HapticFeedback.lightImpact();
-                          //         Fluttertoast.showToast(
-                          //             msg: 'Forgotten password button pressed');
-                          //       },
-                          //     ),
-                          //   ],
-                          // ),
-                        ],
+                                GestureDetector(
+                                  onTap: () {
+                                    Get.to(LoginPage());
+                                  },
+                                  child: Text(
+                                    "Login",
+                                    style: TextStyle(
+                                        decorationStyle:
+                                            TextDecorationStyle.solid,
+                                        fontStyle: FontStyle.italic,
+                                        fontSize: 23,
+                                        color: Colors.white.withOpacity(.7),
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            // Row(
+                            //   mainAxisAlignment: MainAxisAlignment.center,
+                            //   children: [
+                            //     component2(
+                            //       'LOGIN',
+                            //       2.58,
+                            //       () {
+                            //         siginmethod();
+                            //         HapticFeedback.lightImpact();
+                            //         Fluttertoast.showToast(
+                            //             msg: 'Login button pressed');
+                            //       },
+                            //     ),
+                            //     SizedBox(width: size.width / 20),
+                            //     component2(
+                            //       'Forgotten password!',
+                            //       2.58,
+                            //       () {
+                            //         HapticFeedback.lightImpact();
+                            //         Fluttertoast.showToast(
+                            //             msg: 'Forgotten password button pressed');
+                            //       },
+                            //     ),
+                            //   ],
+                            // ),
+                          ],
+                        ),
                       ),
                     ),
                   ],

@@ -216,7 +216,8 @@ class DashBoard extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
-          icon: Icon(Icons.local_hospital_sharp),
+          backgroundColor: Color.fromARGB(255, 245, 50, 137),
+          icon: Icon(Icons.healing_outlined),
           onPressed: () {
             showModalBottomSheet(
               backgroundColor: Colors.grey.shade100,
@@ -307,7 +308,7 @@ class DashBoard extends StatelessWidget {
               },
             );
           },
-          label: Text("Near by Hospital")),
+          label: Text("Get Consultation")),
     );
   }
 }

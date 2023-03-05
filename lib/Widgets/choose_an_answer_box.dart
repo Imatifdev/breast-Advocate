@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 class ChooseAnAnswerBox extends StatelessWidget {
   const ChooseAnAnswerBox({
     Key? key,
@@ -17,7 +18,7 @@ class ChooseAnAnswerBox extends StatelessWidget {
           'Choose an answer',
           textAlign: TextAlign.center,
           style: GoogleFonts.mulish(
-            fontSize: 15,
+            fontSize: 16,
             color: const Color.fromRGBO(101, 99, 99, 1),
             fontWeight: FontWeight.w700,
           ),
@@ -26,5 +27,3 @@ class ChooseAnAnswerBox extends StatelessWidget {
     );
   }
 }
-
-

@@ -1,13 +1,13 @@
 List<String> questionsList = [
-  '',
-  'Name the most common type of cancer that kills men in the world? ?', //question 1
-  'Name cancer that starts in the skin or the tissues that line other organs?', //question 2
-  'Name cancer that occurs in the bone marrow and creates blood cells?',
-  'The abnormal growth of cells in the body is known as..........',
-  'The most common types of treatment for Cancer are...',
-  'Name the cancer of connective tissues or cancer that occurs in the connective tissues in the body',
-  'Name the most common type of cancer that kills men in the world? ?', //question 1
-  'Name cancer that starts in the skin or the tissues that line other organs?', //question 2
-  'Name cancer that occurs in the bone marrow and creates blood cells?',
-  'The abnormal growth of cells in the body is known as..........',
+  "",
+  'What is the age group you belong to?', //question 1
+  'Have you breastfeed?', //question 2
+  'Are you obese?', // question 3
+  'At what age did you had your menarche?', //question4
+  'At what age did you get your menopause? ', //question 5
+  'Have you ever undergone a Postmenopausal Hormone Therapy?', //question 6
+  'Do you have dense breasts?', //question 7
+  'How often do you smoke and drink? ', //question 8
+  'From how long have you been using oral contraceptives?', //question 9
+  'Have you ever undergone a radiation therapy on breast or have a family history of breast cancer?' //question 10
 ];
