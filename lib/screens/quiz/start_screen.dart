@@ -70,7 +70,17 @@ class _StartQuizState extends State<StartQuiz> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SizedBox(
-                  height: 140,
+                  height: 100,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Text(
+                    "Let's do a self examination for your chances of having breast cancer based on answers to the following questions provided .Be honest while answering all of them",
+                    style: TextStyle(fontSize: 20),
+                  ),
+                ),
+                SizedBox(
+                  height: 30,
                 ),
                 Container(
                   width: MediaQuery.of(context).size.width - 60,
@@ -127,7 +137,7 @@ class _StartQuizState extends State<StartQuiz> {
                 //   },
                 // ),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * .2,
+                  height: 50,
                 ),
                 Lottie.asset(
                   'Assets/2.json',

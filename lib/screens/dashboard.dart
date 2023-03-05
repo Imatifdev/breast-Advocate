@@ -18,25 +18,18 @@ import 'cancerscreens/intro.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'cancerscreens/symptoms.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DashBoard extends StatelessWidget {
   final makeBottom = Container(
     height: 55.0,
     child: BottomAppBar(
-      color: Color.fromRGBO(58, 66, 86, 1.0),
+      color: Colors.pink.shade100,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           IconButton(
-            icon: Icon(Icons.home, color: Colors.white),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: Icon(Icons.blur_on, color: Colors.white),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: Icon(Icons.hotel, color: Colors.white),
+            icon: Icon(Icons.safety_check, color: Colors.black),
             onPressed: () {},
           ),
           IconButton(
@@ -52,6 +45,7 @@ class DashBoard extends StatelessWidget {
     final user = FirebaseAuth.instance.currentUser;
     return Scaffold(
       drawer: Drawer(
+        backgroundColor: Colors.white,
         child: ElevatedButton(
             onPressed: () {
               FirebaseAuth.instance.signOut();
@@ -68,7 +62,7 @@ class DashBoard extends StatelessWidget {
         backgroundColor: Colors.white70,
         elevation: 0,
       ),
-      // bottomNavigationBar: makeBottom,
+      bottomNavigationBar: makeBottom,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -254,19 +248,24 @@ class DashBoard extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
-                              Column(
-                                children: [
-                                  Image.asset(
-                                    "Assets/hsp.png",
-                                    height: 100,
-                                    width: 100,
-                                  ),
-                                  Text(
-                                    "Check Near by \nHospital",
-                                    style: TextStyle(fontSize: 18),
-                                    textAlign: TextAlign.center,
-                                  )
-                                ],
+                              InkWell(
+                                onTap: () {
+                                  _launchURL();
+                                },
+                                child: Column(
+                                  children: [
+                                    Image.asset(
+                                      "Assets/hsp.png",
+                                      height: 100,
+                                      width: 100,
+                                    ),
+                                    Text(
+                                      "Check Near by \nHospital",
+                                      style: TextStyle(fontSize: 18),
+                                      textAlign: TextAlign.center,
+                                    )
+                                  ],
+                                ),
                               ),
                               InkWell(
                                 onTap: () {
@@ -369,4 +368,12 @@ class MyCard extends StatelessWidget {
       ),
     );
   }
+}
+
+_launchURL() async {
+  const url =
+      "https://www.google.com/maps/search/breast+cancer+hospital+in+lahore/@31.5435477,74.2503422,13z/data=!3m1!4b1?hl=en";
+  final Uri _url = Uri.parse(url);
+
+  await launchUrl(_url, mode: LaunchMode.externalApplication);
 }

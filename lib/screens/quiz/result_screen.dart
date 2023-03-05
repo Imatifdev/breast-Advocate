@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -59,9 +61,9 @@ class ResultPage extends StatelessWidget {
       child: Consumer<IndexController>(
           builder: (context, getIndexProvider, child) {
         return Scaffold(
-          backgroundColor: Colors.white,
+          backgroundColor: CustomTheme.pinkthemecolor,
           appBar: AppBar(
-            backgroundColor: Colors.white,
+            backgroundColor: CustomTheme.pinkthemecolor,
             leading: marksEarnedFromQuiz > 4
                 ? IconButton(
                     icon: const Icon(
@@ -136,7 +138,7 @@ class ResultPage extends StatelessWidget {
                   'Ancipating your answers,we have predicted',
                   textAlign: TextAlign.center,
                   style: GoogleFonts.mulish(
-                    color: CustomTheme.pinkthemecolor,
+                    color: CustomTheme.greythemecolor,
                     fontWeight: FontWeight.w700,
                     letterSpacing: -0.3,
                     fontSize: 25,
@@ -169,7 +171,7 @@ class ResultPage extends StatelessWidget {
                       ),
                       progressColor: marksEarnedFromQuiz > 4
                           ? const Color.fromRGBO(82, 186, 0, 1)
-                          : const Color.fromRGBO(254, 123, 30, 1),
+                          : Color.fromARGB(255, 230, 97, 14),
                     ),
                   ),
                 ],
@@ -265,18 +267,27 @@ class ResultPage extends StatelessWidget {
                                   textAlign: TextAlign.center,
                                   style: GoogleFonts.poppins(
                                     fontWeight: FontWeight.w500,
+                                    color: Colors.white,
                                     letterSpacing: -0.3,
                                     fontSize: 16,
                                   ),
                                 ),
                               ),
                             ),
+                            SizedBox(
+                              height: 20,
+                            ),
                             ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                     backgroundColor:
-                                        CustomTheme.pinkthemecolor),
+                                        CustomTheme.greythemecolor),
                                 onPressed: () {},
-                                child: Text("Consult with Doctor"))
+                                child: Text(
+                                  "Consult with Doctor",
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                  ),
+                                ))
                           ],
                         )
                       : Container(
@@ -285,6 +296,7 @@ class ResultPage extends StatelessWidget {
                             'Hurrahhh ! You are not at a risk of having breast cancer at present, but still would advice you to go for mammography every two years.',
                             textAlign: TextAlign.center,
                             style: GoogleFonts.mulish(
+                              color: Colors.white,
                               fontWeight: FontWeight.w800,
                               letterSpacing: -0.3,
                               fontSize: 15,
@@ -303,17 +315,22 @@ class ResultPage extends StatelessWidget {
                           ),
                           child: Column(
                             children: [
-                              InkWell(
-                                onTap: () {
+                              ElevatedButton.icon(
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor:
+                                        CustomTheme.greythemecolor),
+                                onPressed: () {
                                   Get.to(DashBoard());
                                 },
-                                child: Text(
+                                icon: Icon(
+                                  Icons.dashboard,
+                                  color: Colors.black,
+                                ),
+                                label: Text(
                                   'Move to Dashboard',
                                   textAlign: TextAlign.center,
                                   style: GoogleFonts.mulish(
-                                    decoration: TextDecoration.underline,
-                                    color:
-                                        const Color.fromRGBO(66, 130, 241, 1),
+                                    color: Colors.black,
                                     fontWeight: FontWeight.w700,
                                     letterSpacing: -0.3,
                                     fontSize: 15,
@@ -321,27 +338,32 @@ class ResultPage extends StatelessWidget {
                                 ),
                               ),
                               Container(
-                                width: 160,
-                                height: 37,
-                                color: Colors.white,
-                                child: InkWell(
-                                  onTap: () {
-                                    Get.to(StartQuiz());
-                                  },
-                                  child: Text(
-                                    'Test Personality Again',
-                                    textAlign: TextAlign.center,
-                                    style: GoogleFonts.mulish(
-                                      decoration: TextDecoration.underline,
-                                      color:
-                                          const Color.fromRGBO(66, 130, 241, 1),
-                                      fontWeight: FontWeight.w700,
-                                      letterSpacing: -0.3,
-                                      fontSize: 15,
+                                  width: 250,
+                                  height: 50,
+                                  color: Colors.white,
+                                  child: ElevatedButton.icon(
+                                    style: ElevatedButton.styleFrom(
+                                        backgroundColor:
+                                            CustomTheme.greythemecolor),
+                                    onPressed: () {
+                                      Get.to(StartQuiz());
+                                    },
+                                    icon: Icon(
+                                      Icons.restart_alt,
+                                      color: Colors.black,
+                                      size: 25,
                                     ),
-                                  ),
-                                ),
-                              ),
+                                    label: Text(
+                                      'Test to yourself again',
+                                      textAlign: TextAlign.center,
+                                      style: GoogleFonts.mulish(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.w700,
+                                        letterSpacing: -0.3,
+                                        fontSize: 15,
+                                      ),
+                                    ),
+                                  )),
                             ],
                           ),
                         )

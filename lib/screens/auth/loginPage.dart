@@ -11,6 +11,9 @@ import 'package:email_validator/email_validator.dart';
 import 'package:pinkgirl/screens/auth/signuppage.dart';
 import 'package:get/get.dart';
 
+import '../../utilities/Mytheme.dart';
+import '../dashboard.dart';
+
 class LoginPage extends StatefulWidget {
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -110,7 +113,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Color(0xff192028),
+      backgroundColor: CustomTheme.pinkthemecolor,
       body: ScrollConfiguration(
         behavior: MyBehavior(),
         child: SingleChildScrollView(
@@ -168,7 +171,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                         child: Text(
                           'Welcome Back!\nHave a Good Day',
                           style: TextStyle(
-                            color: Colors.white.withOpacity(.7),
+                            color: Colors.black.withOpacity(.7),
                             fontSize: 40,
                             fontWeight: FontWeight.bold,
                             letterSpacing: 1,
@@ -301,12 +304,12 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
             width: size.width / width,
             alignment: Alignment.center,
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(.05),
+              color: Colors.black.withOpacity(.05),
               borderRadius: BorderRadius.circular(15),
             ),
             child: Text(
               string,
-              style: TextStyle(color: Colors.white.withOpacity(.8)),
+              style: TextStyle(color: Colors.black.withOpacity(.8)),
             ),
           ),
         ),
@@ -316,12 +319,13 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
 
   Future siginmethod() async {
     final isValid = formkey.currentState!.validate();
+    Get.to(DashBoard());
     if (!isValid) return;
-    showDialog(
-        context: context,
-        builder: (context) => Center(
-              child: CircularProgressIndicator(),
-            ));
+    // showDialog(
+    //     context: context,
+    //     builder: (context) => Center(
+    //           child: CircularProgressIndicator(),
+    //         ));
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: emailcontroller.text.trim(),
@@ -399,27 +403,27 @@ class MyformField extends StatelessWidget {
           alignment: Alignment.center,
           padding: EdgeInsets.only(right: size.width / 30),
           decoration: BoxDecoration(
-            color: Colors.white.withOpacity(.05),
+            color: Colors.black.withOpacity(.05),
             borderRadius: BorderRadius.circular(15),
           ),
           child: TextFormField(
             validator: validator,
             controller: controller,
-            style: TextStyle(color: Colors.white.withOpacity(.8)),
-            cursorColor: Colors.white,
+            style: TextStyle(color: Colors.black.withOpacity(.8)),
+            cursorColor: Colors.black,
             obscureText: isPassword!,
             keyboardType:
                 isEmail! ? TextInputType.emailAddress : TextInputType.text,
             decoration: InputDecoration(
               prefixIcon: Icon(
                 icon,
-                color: Colors.white.withOpacity(.7),
+                color: Colors.black.withOpacity(.7),
               ),
               border: InputBorder.none,
               hintMaxLines: 1,
               hintText: hintText,
               hintStyle:
-                  TextStyle(fontSize: 14, color: Colors.white.withOpacity(.5)),
+                  TextStyle(fontSize: 14, color: Colors.black.withOpacity(.5)),
             ),
           ),
         ),

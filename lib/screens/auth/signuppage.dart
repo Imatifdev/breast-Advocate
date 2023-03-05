@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:async';
@@ -5,6 +7,7 @@ import 'dart:ui';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import '../../utilities/Mytheme.dart';
 import '../dashboard.dart';
 import '../quiz/start_screen.dart';
 import 'loginPage.dart';
@@ -108,17 +111,11 @@ class _SignupState extends State<Signup> with TickerProviderStateMixin {
   TextEditingController name = TextEditingController();
   final formkey = GlobalKey<FormState>();
 
-  Future siginmethod() async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: emailcontroller.text.trim(),
-        password: passcontroller.text.trim());
-  }
-
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Color(0xff192028),
+      backgroundColor: CustomTheme.pinkthemecolor,
       body: ScrollConfiguration(
         behavior: MyBehavior(),
         child: SingleChildScrollView(
@@ -173,7 +170,7 @@ class _SignupState extends State<Signup> with TickerProviderStateMixin {
                           child: Text(
                             'Cancer Can\'t, \nBut We Can',
                             style: TextStyle(
-                              color: Colors.white.withOpacity(.7),
+                              color: Colors.black.withOpacity(.7),
                               fontSize: 40,
                               fontWeight: FontWeight.bold,
                               letterSpacing: 1,
@@ -229,9 +226,9 @@ class _SignupState extends State<Signup> with TickerProviderStateMixin {
                             component2(
                               'Signup',
                               2,
-                              () async {
+                              () {
                                 signupmethod();
-                                await Get.to(StartQuiz());
+                                //await Get.to(StartQuiz());
 
                                 HapticFeedback.lightImpact();
                                 Fluttertoast.showToast(
@@ -251,7 +248,7 @@ class _SignupState extends State<Signup> with TickerProviderStateMixin {
                                   "Already Have an Account?",
                                   style: TextStyle(
                                       fontSize: 20,
-                                      color: Colors.white.withOpacity(.7),
+                                      color: Colors.black.withOpacity(.7),
                                       fontWeight: FontWeight.normal),
                                 ),
                                 GestureDetector(
@@ -265,7 +262,7 @@ class _SignupState extends State<Signup> with TickerProviderStateMixin {
                                             TextDecorationStyle.solid,
                                         fontStyle: FontStyle.italic,
                                         fontSize: 23,
-                                        color: Colors.white.withOpacity(.7),
+                                        color: Colors.black.withOpacity(.7),
                                         fontWeight: FontWeight.bold),
                                   ),
                                 ),
@@ -318,11 +315,11 @@ class _SignupState extends State<Signup> with TickerProviderStateMixin {
     //         ));
     final isValid = formkey.currentState!.validate();
     if (!isValid) return;
-    showDialog(
-        context: context,
-        builder: (context) => Center(
-              child: LinearProgressIndicator(),
-            ));
+    // showDialog(
+    //     context: context,
+    //     builder: (context) => Center(
+    //           child: LinearProgressIndicator(),
+    //         ));
 
     try {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
@@ -348,12 +345,16 @@ class _SignupState extends State<Signup> with TickerProviderStateMixin {
             width: size.width / width,
             alignment: Alignment.center,
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(.09),
+              color: Colors.black.withOpacity(.09),
               borderRadius: BorderRadius.circular(15),
             ),
             child: Text(
               string,
-              style: TextStyle(color: Colors.white.withOpacity(.8)),
+              style: TextStyle(
+                fontSize: 18,
+                color: Colors.black.withOpacity(.8),
+                fontWeight: FontWeight.w500,
+              ),
             ),
           ),
         ),
@@ -429,7 +430,7 @@ class MyformField extends StatelessWidget {
           alignment: Alignment.center,
           padding: EdgeInsets.only(right: size.width / 30),
           decoration: BoxDecoration(
-            color: Colors.white.withOpacity(.09),
+            color: Colors.black.withOpacity(.09),
             borderRadius: BorderRadius.circular(15),
           ),
           child: TextFormField(
@@ -442,13 +443,13 @@ class MyformField extends StatelessWidget {
             decoration: InputDecoration(
               prefixIcon: Icon(
                 icon,
-                color: Colors.white.withOpacity(.7),
+                color: Colors.black.withOpacity(.7),
               ),
               border: InputBorder.none,
               hintMaxLines: 1,
               hintText: hintText,
               hintStyle:
-                  TextStyle(fontSize: 14, color: Colors.white.withOpacity(.9)),
+                  TextStyle(fontSize: 14, color: Colors.black.withOpacity(.9)),
             ),
           ),
         ),
