@@ -6,6 +6,7 @@ import 'package:pinkgirl/screens/cancerscreens/consultation.dart';
 
 import '../screens/auth/loginPage.dart';
 import '../screens/auth/signuppage.dart';
+import '../screens/cancerscreens/docdetail.dart';
 import '../screens/cancerscreens/excerise.dart';
 import '../screens/cancerscreens/intro.dart';
 import '../screens/cancerscreens/symptoms.dart';
@@ -52,6 +53,12 @@ appRoutes() => [
       GetPage(
         name: '/doc',
         page: () => Doctor(),
+        transition: Transition.leftToRightWithFade,
+        transitionDuration: Duration(milliseconds: 500),
+      ),
+      GetPage(
+        name: '/docdetail',
+        page: () => DocDetail(),
         transition: Transition.leftToRightWithFade,
         transitionDuration: Duration(milliseconds: 500),
       ),

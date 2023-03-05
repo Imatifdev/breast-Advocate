@@ -1,6 +1,10 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:pinkgirl/screens/cancerscreens/docdetail.dart';
+import 'package:get/get.dart';
+
+import '../../utilities/Mytheme.dart';
 
 class Doctor extends StatelessWidget {
   const Doctor({super.key});
@@ -8,13 +12,20 @@ class Doctor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        iconTheme: IconThemeData(color: CustomTheme.pinkthemecolor),
+      ),
+      backgroundColor: Colors.white,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         child: Column(
           children: [
             InkWell(
-              onTap: () {},
+              onTap: () {
+                Get.to(DocDetail());
+              },
               child: Card(
                 elevation: 10,
                 child: Container(

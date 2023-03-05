@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:pinkgirl/screens/dashboard.dart';
+import 'package:pinkgirl/utilities/Mytheme.dart';
 import 'package:provider/provider.dart';
 import 'controller/index_controller.dart';
 import 'screens/splash_screen.dart';
@@ -25,6 +26,7 @@ class MainPage extends StatelessWidget {
         ),
       ],
       child: GetMaterialApp(
+        //theme: ThemeData(canvasColor: CustomTheme.pinkthemecolor),
         navigatorKey: navigatorkey,
         home: SplashScreen(),
         debugShowCheckedModeBanner: false,
