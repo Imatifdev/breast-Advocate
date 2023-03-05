@@ -198,7 +198,7 @@ class DashBoard extends StatelessWidget {
                             desc: "Read about Symptoms",
                             image: "Assets/6.png",
                             onTap: () {
-                              Get.to(MyCustomWidget());
+                              Get.to(Exercise());
                             },
                           ),
                           MyCard(

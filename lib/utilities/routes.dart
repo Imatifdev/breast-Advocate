@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 
@@ -48,7 +50,7 @@ appRoutes() => [
       ),
       GetPage(
         name: '/Exercise',
-        page: () => MyCustomWidget(),
+        page: () => Exercise(),
         transition: Transition.leftToRightWithFade,
         transitionDuration: Duration(milliseconds: 500),
       ),

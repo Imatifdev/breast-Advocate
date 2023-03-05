@@ -4,3 +4,11 @@ final List<String> imageList = [
   'https://www.fsb.com.br/wp-content/uploads/2020/04/Outubro-Rosa-1546x655.jpg',
   'https://6amcity.brightspotcdn.com/dims4/default/48ee8dd/2147483647/strip/true/crop/960x540+0+45/resize/1440x810!/quality/90/?url=https%3A%2F%2Fk1-prod-sixam-city.s3.amazonaws.com%2Fbrightspot%2F98%2Fc4%2Fe63fdb404e25b81b7ae1ac9d58fa%2Fric-vpfw-breast-cancer-awareness-month-10.4.22.jpg'
 ];
+
+final List<String> eximageList = [
+  "https://images.pexels.com/photos/3822906/pexels-photo-3822906.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      "https://images.pexels.com/photos/3094230/pexels-photo-3094230.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      "https://images.pexels.com/photos/9366516/pexels-photo-9366516.jpeg?auto=compress&cs=tinysrgb&w=1600"
+      "https://images.pexels.com/photos/8539234/pexels-photo-8539234.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      "https://images.pexels.com/photos/2158963/pexels-photo-2158963.jpeg?auto=compress&cs=tinysrgb&w=1600"
+];
