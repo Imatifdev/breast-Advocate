@@ -2,6 +2,7 @@
 
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
+import 'package:pinkgirl/screens/cancerscreens/consultation.dart';
 
 import '../screens/auth/loginPage.dart';
 import '../screens/auth/signuppage.dart';
@@ -45,6 +46,12 @@ appRoutes() => [
       GetPage(
         name: '/startquiz',
         page: () => StartQuiz(),
+        transition: Transition.leftToRightWithFade,
+        transitionDuration: Duration(milliseconds: 500),
+      ),
+      GetPage(
+        name: '/doc',
+        page: () => Doctor(),
         transition: Transition.leftToRightWithFade,
         transitionDuration: Duration(milliseconds: 500),
       ),
