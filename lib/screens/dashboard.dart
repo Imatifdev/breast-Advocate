@@ -12,6 +12,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:get/get.dart';
 
 import 'auth/loginPage.dart';
+import 'cancerscreens/consultation.dart';
 import 'cancerscreens/excerise.dart';
 import 'cancerscreens/intro.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -241,6 +242,14 @@ class DashBoard extends StatelessWidget {
                               height: 150,
                             ),
                           ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            child: Divider(
+                              thickness: 2,
+                              height: 20,
+                              color: Colors.grey,
+                            ),
+                          ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
@@ -258,21 +267,37 @@ class DashBoard extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              Column(
-                                children: [
-                                  Image.asset(
-                                    "Assets/doc.png",
-                                    height: 100,
-                                    width: 100,
-                                  ),
-                                  Text(
-                                    "Consult with\n Doctor",
-                                    style: TextStyle(fontSize: 18),
-                                    textAlign: TextAlign.center,
-                                  )
-                                ],
+                              InkWell(
+                                onTap: () {
+                                  Get.to(Doctor());
+                                },
+                                child: Column(
+                                  children: [
+                                    Image.asset(
+                                      "Assets/doc.png",
+                                      height: 100,
+                                      width: 100,
+                                    ),
+                                    Text(
+                                      "Consult with\n Doctor",
+                                      style: TextStyle(fontSize: 18),
+                                      textAlign: TextAlign.center,
+                                    )
+                                  ],
+                                ),
                               ),
                             ],
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Text(
+                            "You are braver than you believe, stronger than you seem, smarter than you think, and twice as beautiful as you'd ever imagined.",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: 17,
+                                fontWeight: FontWeight.bold,
+                                color: CustomTheme.pinkthemecolor),
                           ),
                         ],
                       ),
