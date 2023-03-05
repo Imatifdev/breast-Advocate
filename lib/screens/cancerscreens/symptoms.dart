@@ -130,6 +130,9 @@ class Symtoms extends StatelessWidget {
                 height: MediaQuery.of(context).size.height * .5,
                 width: MediaQuery.of(context).size.width,
               ),
+              SizedBox(
+                height: 20,
+              ),
               Center(
                 child: ActionSlider.custom(
                   toggleMargin: EdgeInsets.zero,
@@ -139,7 +142,7 @@ class Symtoms extends StatelessWidget {
                   backgroundColor: Colors.pink.shade100,
                   foregroundChild: Container(
                       decoration: const BoxDecoration(
-                        color: Colors.pink,
+                        color: CustomTheme.pinkthemecolor,
                         borderRadius: BorderRadius.all(Radius.circular(10.0)),
                       ),
                       child:
@@ -147,7 +150,7 @@ class Symtoms extends StatelessWidget {
                   foregroundBuilder: (context, state, child) => child!,
                   backgroundChild: Center(
                       child: Text(
-                    'Slide to learn more symtoms...',
+                    '     Slide to learn more symtoms...',
                   )),
                   backgroundBuilder: (context, state, child) => ClipRect(
                       child: OverflowBox(

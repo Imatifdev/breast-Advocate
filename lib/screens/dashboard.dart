@@ -201,22 +201,13 @@ class DashBoard extends StatelessWidget {
                               Get.to(Exercise());
                             },
                           ),
-                          MyCard(
-                            title: 'Risk Factors',
-                            desc: "Read about Symptoms",
-                            image: "Assets/6.png",
-                            onTap: () {},
-                          ),
-                          MyCard(
-                            title: 'Excercise',
-                            desc: "Read about Symptoms",
-                            image: "Assets/6.png",
-                            onTap: () {},
-                          ),
                         ],
                       ),
                     ),
                   ),
+                  SizedBox(
+                    height: 50,
+                  )
                 ],
               ),
             ),
@@ -227,22 +218,65 @@ class DashBoard extends StatelessWidget {
           icon: Icon(Icons.local_hospital_sharp),
           onPressed: () {
             showModalBottomSheet(
+              backgroundColor: Colors.grey.shade100,
+              enableDrag: true,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(20),
+                      topLeft: Radius.circular(20))),
               context: context,
               builder: (context) {
                 return Wrap(
                   children: [
-                    ListTile(
-                      leading: Icon(Icons.share),
-                      title: Text('Share'),
-                    ),
-                    ListTile(
-                      leading: Icon(Icons.copy),
-                      title: Text('Copy Link'),
-                    ),
-                    ListTile(
-                      leading: Icon(Icons.edit),
-                      title: Text('Edit'),
-                    ),
+                    Container(
+                      height: 600,
+                      width: MediaQuery.of(context).size.width,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Center(
+                            child: Lottie.asset(
+                              'Assets/auth.json',
+                              width: 150,
+                              height: 150,
+                            ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Column(
+                                children: [
+                                  Image.asset(
+                                    "Assets/hsp.png",
+                                    height: 100,
+                                    width: 100,
+                                  ),
+                                  Text(
+                                    "Check Near by \nHospital",
+                                    style: TextStyle(fontSize: 18),
+                                    textAlign: TextAlign.center,
+                                  )
+                                ],
+                              ),
+                              Column(
+                                children: [
+                                  Image.asset(
+                                    "Assets/doc.png",
+                                    height: 100,
+                                    width: 100,
+                                  ),
+                                  Text(
+                                    "Consult with\n Doctor",
+                                    style: TextStyle(fontSize: 18),
+                                    textAlign: TextAlign.center,
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    )
                   ],
                 );
               },
