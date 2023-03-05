@@ -106,6 +106,7 @@ class _SignupState extends State<Signup> with TickerProviderStateMixin {
   TextEditingController passcontroller = TextEditingController();
 
   TextEditingController name = TextEditingController();
+  final formkey = GlobalKey<FormState>();
 
   Future siginmethod() async {
     await FirebaseAuth.instance.signInWithEmailAndPassword(
@@ -188,6 +189,11 @@ class _SignupState extends State<Signup> with TickerProviderStateMixin {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           MyformField(
+                            validator: (String? email) {
+                              if (email!.isEmpty) {
+                                return 'enter name';
+                              }
+                            },
                             isEmail: true,
                             isPassword: false,
                             controller: name,
@@ -195,6 +201,11 @@ class _SignupState extends State<Signup> with TickerProviderStateMixin {
                             hintText: 'Name',
                           ),
                           MyformField(
+                            validator: (String? email) {
+                              if (email!.isEmpty) {
+                                return 'enter email';
+                              }
+                            },
                             isEmail: true,
                             isPassword: false,
                             controller: emailcontroller,
@@ -202,6 +213,11 @@ class _SignupState extends State<Signup> with TickerProviderStateMixin {
                             hintText: 'Email...',
                           ),
                           MyformField(
+                            validator: (String? pass) {
+                              if (pass!.length < 8) {
+                                return 'enter 8 digits';
+                              }
+                            },
                             isEmail: false,
                             isPassword: true,
                             controller: passcontroller,
@@ -297,6 +313,8 @@ class _SignupState extends State<Signup> with TickerProviderStateMixin {
     //     builder: (context) => Center(
     //           child: CircularProgressIndicator(),
     //         ));
+    final isValid = formkey.currentState!.validate();
+    if (!isValid) return;
     showDialog(
         context: context,
         builder: (context) => Center(
@@ -381,6 +399,7 @@ class MyformField extends StatelessWidget {
   final String hintText;
   final bool? isPassword;
   final bool? isEmail;
+  final String? Function(String?) validator;
 
   const MyformField(
       {super.key,
@@ -388,7 +407,8 @@ class MyformField extends StatelessWidget {
       this.isPassword,
       required this.controller,
       required this.icon,
-      required this.hintText});
+      required this.hintText,
+      required this.validator});
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
