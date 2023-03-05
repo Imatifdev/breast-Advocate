@@ -8,12 +8,18 @@ import 'package:action_slider/action_slider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../Widgets/youtubeplay.dart';
+import '../../utilities/Mytheme.dart';
 
 class Intro extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0,
+          iconTheme: IconThemeData(color: CustomTheme.pinkthemecolor),
+        ),
         backgroundColor: Colors.white,
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),

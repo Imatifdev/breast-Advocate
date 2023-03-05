@@ -15,6 +15,8 @@ import 'cancerscreens/excerise.dart';
 import 'cancerscreens/intro.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import 'cancerscreens/symptoms.dart';
+
 class DashBoard extends StatelessWidget {
   final makeBottom = Container(
     height: 55.0,
@@ -178,7 +180,9 @@ class DashBoard extends StatelessWidget {
                             title: 'Symtoms',
                             desc: "Read about Symptoms",
                             image: "Assets/2.png",
-                            onTap: () {},
+                            onTap: () {
+                              Get.to(Symtoms());
+                            },
                           ),
                           MyCard(
                             title: 'Self Examination',
