@@ -22,20 +22,29 @@ import 'package:url_launcher/url_launcher.dart';
 
 class DashBoard extends StatelessWidget {
   final makeBottom = Container(
-    height: 55.0,
+    height: 55,
     child: BottomAppBar(
+      height: 55,
       color: Colors.pink.shade100,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          IconButton(
-            icon: Icon(Icons.safety_check, color: Colors.black),
-            onPressed: () {},
+          Column(
+            children: [
+              IconButton(
+                icon: Icon(Icons.person),
+                onPressed: () {},
+              ),
+            ],
           ),
-          IconButton(
-            icon: Icon(Icons.account_box, color: Colors.white),
-            onPressed: () {},
-          )
+          Column(
+            children: [
+              IconButton(
+                icon: Icon(Icons.add),
+                onPressed: () {},
+              ),
+            ],
+          ),
         ],
       ),
     ),
@@ -45,13 +54,46 @@ class DashBoard extends StatelessWidget {
     final user = FirebaseAuth.instance.currentUser;
     return Scaffold(
       drawer: Drawer(
-        backgroundColor: Colors.white,
-        child: ElevatedButton(
-            onPressed: () {
+          child: ListView(
+        // Important: Remove any padding from the ListView.
+        padding: EdgeInsets.zero,
+        children: <Widget>[
+          UserAccountsDrawerHeader(
+            accountName: Text("Abhishek Mishra"),
+            accountEmail: Text("abhishekm977@gmail.com"),
+            currentAccountPicture: CircleAvatar(child: Icon(Icons.person)),
+          ),
+          ListTile(
+            leading: Icon(Icons.home),
+            title: Text("Home"),
+            onTap: () {
+              Get.to(DashBoard());
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.local_hospital_outlined),
+            title: Text("Consultation"),
+            onTap: () {
+              Get.to(Doctor());
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.logout),
+            title: Text("Logout"),
+            onTap: () {
               FirebaseAuth.instance.signOut();
             },
-            child: Text("Signout")),
-      ),
+          ),
+        ],
+      )),
+      //  Drawer(
+      //   backgroundColor: Colors.white,
+      //   child: ElevatedButton(
+      //       onPressed: () {
+      //         FirebaseAuth.instance.signOut();
+      //       },
+      //       child: Text("Signout")),
+
       appBar: AppBar(
         iconTheme: IconThemeData(color: CustomTheme.pinkthemecolor),
         title: Text(
@@ -62,7 +104,7 @@ class DashBoard extends StatelessWidget {
         backgroundColor: Colors.white70,
         elevation: 0,
       ),
-      bottomNavigationBar: makeBottom,
+      // bottomNavigationBar: makeBottom,
       body: SingleChildScrollView(
         child: Column(
           children: [

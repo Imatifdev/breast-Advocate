@@ -23,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   _navigateToFirstPage() async {
-    await Future.delayed(const Duration(seconds: 6), () {});
+    await Future.delayed(const Duration(seconds: 8), () {});
     // ignore: use_build_context_synchronously
     Navigator.pushReplacement(
         context,
@@ -56,15 +56,22 @@ class _SplashScreenState extends State<SplashScreen> {
             crossAxisAlignment: CrossAxisAlignment.end,
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
+              Center(
+                child: Lottie.asset(
+                  'Assets/auth.json',
+                  width: 200,
+                  height: 200,
+                  fit: BoxFit.contain,
+                ),
+              ),
               Expanded(
-                flex: 1,
                 child: Lottie.asset(
                   'Assets/splash.json',
                   width: MediaQuery.of(context).size.width * .9,
                   height: MediaQuery.of(context).size.height * .7,
                   fit: BoxFit.contain,
                 ),
-              )
+              ),
             ]),
       ),
     );

@@ -86,7 +86,8 @@ class DocDetail extends StatelessWidget {
                 onPressed: () {
                   _launchURL();
                 },
-                child: Text("Book your Appointment"))
+                child: Text("Book your Appointment")),
+            SizedBox(height: 50)
           ],
         ),
       ),
