@@ -39,7 +39,11 @@ $ flutter run
 
 <h3 align="center"> # Well As our app uses Firebase as backend as a service. So, to run the project we need to connect firebase within our app So , for that goto firebase website https://firebase.google.com/  and make account and setup your firebase </h3>
 
-  ## and if you are having any trouble in ruuning this app just email us and we'll help you ASAP..!
+<h2 align="center" > For hackathon judges we have provided apk file, So , they can test our app without any hesitation </h2>
+
+
+
+  # and if you are having any trouble in ruuning this app just email us and we'll help you ASAP..!
 
 ```
 # mr.mugy4@gmail.com
