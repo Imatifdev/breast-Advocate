@@ -46,6 +46,31 @@ class Doctor extends StatelessWidget {
                   ),
                 ),
               ),
+            ),
+            InkWell(
+              onTap: () {
+                Get.to(DocDetail());
+              },
+              child: Card(
+                elevation: 10,
+                child: Container(
+                  height: 90,
+                  child: ListTile(
+                    leading: CircleAvatar(
+                      radius: 30,
+                      backgroundImage: NetworkImage(
+                        "https://drareendambaruah.in/wp-content/themes/barua/images/home-heart.jpg",
+                      ),
+                    ),
+                    title: Text(
+                      "Dr. Areendam Barua",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    subtitle: Text(
+                        "Oncologist\nMBBS, AFSA, MS General Surgery (Assam), MCh Surgical Oncology"),
+                  ),
+                ),
+              ),
             )
           ],
         ),
