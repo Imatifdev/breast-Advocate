@@ -68,7 +68,7 @@ class Intro extends StatelessWidget {
                   contentBorderColor: Color.fromARGB(255, 213, 81, 125),
                   maxOpenSections: 2,
                   headerBackgroundColorOpened: Colors.pink,
-                  scaleWhenAnimating: true,
+                  //scaleWhenAnimating: true,
                   openAndCloseAnimation: true,
                   headerPadding: const EdgeInsets.only(
                       left: 10, top: 10, bottom: 10, right: 10),

@@ -18,7 +18,7 @@ class QuestionBox extends StatelessWidget {
           textAlign: TextAlign.left,
           style: GoogleFonts.mulish(
               color: Colors.white,
-              fontSize: 25,
+              fontSize: 22,
               fontWeight: FontWeight.w700,
               letterSpacing: -0.3),
         ),

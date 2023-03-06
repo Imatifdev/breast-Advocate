@@ -4,11 +4,14 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:pinkgirl/screens/cancerscreens/consultation.dart';
 import 'package:pinkgirl/screens/dashboard.dart';
 import 'package:pinkgirl/utilities/Mytheme.dart';
 import 'package:provider/provider.dart';
 import '../../../controller/index_controller.dart';
 import 'start_screen.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 import 'package:get/get.dart';
 
 class ResultPage extends StatelessWidget {
@@ -129,299 +132,317 @@ class ResultPage extends StatelessWidget {
             ),
             elevation: 0,
           ),
-          body: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Center(
-                child: Text(
-                  'Ancipating your answers,we have predicted',
-                  textAlign: TextAlign.center,
-                  style: GoogleFonts.mulish(
-                    color: CustomTheme.greythemecolor,
-                    fontWeight: FontWeight.w700,
-                    letterSpacing: -0.3,
-                    fontSize: 25,
-                  ),
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    width: 149.33,
-                    height: 149.33,
-                    child: CircularPercentIndicator(
-                      backgroundColor: const Color.fromRGBO(230, 230, 230, 1),
-                      animation: true,
-                      radius: 70,
-                      lineWidth: 13.0,
-                      percent: marksEarnedFromQuiz / 10,
-                      animationDuration: 1000,
-                      reverse: true,
-                      circularStrokeCap: CircularStrokeCap.round,
-                      center: Text(
-                        "$marksEarnedFromQuiz/10",
-                        style: GoogleFonts.mulish(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w700,
-                          letterSpacing: -0.3,
-                          fontSize: 15,
-                        ),
-                      ),
-                      progressColor: marksEarnedFromQuiz > 4
-                          ? const Color.fromRGBO(82, 186, 0, 1)
-                          : Color.fromARGB(255, 230, 97, 14),
+          body: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Center(
+                  child: Text(
+                    'Ancipating your answers,we have predicted',
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.mulish(
+                      color: CustomTheme.greythemecolor,
+                      fontWeight: FontWeight.w700,
+                      letterSpacing: -0.3,
+                      fontSize: 25,
                     ),
                   ),
-                ],
-              ),
-              Column(
-                children: [
-                  //     Row(
-                  //       mainAxisAlignment: MainAxisAlignment.center,
-                  //       children: [
-                  //         if (marksEarnedFromQuiz < 2)
-                  //           Container(
-                  //             width: 150,
-                  //             height: 40,
-                  //             decoration: BoxDecoration(
-                  //               color: const Color.fromRGBO(254, 123, 30, 1),
-                  //               borderRadius: BorderRadius.circular(20),
-                  //             ),
-                  //             child: Center(
-                  //               child: Text(
-                  //                 'You need 8',
-                  //                 style: GoogleFonts.poppins(
-                  //                   color: const Color.fromRGBO(255, 255, 255, 1),
-                  //                   fontWeight: FontWeight.w800,
-                  //                   letterSpacing: -0.3,
-                  //                   fontSize: 12,
-                  //                 ),
-                  //               ),
-                  //             ),
-                  //           ),
-                  //         InkWell(
-                  //           onTap: () {
-                  //             Get.to(StartQuiz());
-                  //           },
-                  //           child: Text(
-                  //             'Test Personality Again',
-                  //             textAlign: TextAlign.center,
-                  //             style: GoogleFonts.mulish(
-                  //               decoration: TextDecoration.underline,
-                  //               color: const Color.fromRGBO(66, 130, 241, 1),
-                  //               fontWeight: FontWeight.w700,
-                  //               letterSpacing: -0.3,
-                  //               fontSize: 15,
-                  //             ),
-                  //           ),
-                  //         ),
-                  //         if (marksEarnedFromQuiz < 4 && marksEarnedFromQuiz > 2)
-                  //           Container(
-                  //             width: 150,
-                  //             height: 40,
-                  //             decoration: BoxDecoration(
-                  //               color: const Color.fromRGBO(254, 123, 30, 1),
-                  //               borderRadius: BorderRadius.circular(20),
-                  //             ),
-                  //             child: Center(
-                  //               child: Text(
-                  //                 'You need Consulation',
-                  //                 style: GoogleFonts.poppins(
-                  //                   color: const Color.fromRGBO(255, 255, 255, 1),
-                  //                   fontWeight: FontWeight.w800,
-                  //                   letterSpacing: -0.3,
-                  //                   fontSize: 12,
-                  //                 ),
-                  //               ),
-                  //             ),
-                  //           ),
-                  //         if (marksEarnedFromQuiz < 6 && marksEarnedFromQuiz > 4)
-                  //           Container(
-                  //             width: 150,
-                  //             height: 40,
-                  //             decoration: BoxDecoration(
-                  //               color: const Color.fromRGBO(254, 123, 30, 1),
-                  //               borderRadius: BorderRadius.circular(20),
-                  //             ),
-                  //             child: Center(
-                  //               child: Text(
-                  //                 'You need Consulation tisi',
-                  //                 style: GoogleFonts.poppins(
-                  //                   color: const Color.fromRGBO(255, 255, 255, 1),
-                  //                   fontWeight: FontWeight.w800,
-                  //                   letterSpacing: -0.3,
-                  //                   fontSize: 12,
-                  //                 ),
-                  //               ),
-                  //             ),
-                  //           )
-                  marksEarnedFromQuiz < 5
-                      ? Column(
-                          children: [
-                            Container(
-                              child: Center(
-                                child: Text(
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      width: 149.33,
+                      height: 149.33,
+                      child: CircularPercentIndicator(
+                        backgroundColor: const Color.fromRGBO(230, 230, 230, 1),
+                        animation: true,
+                        radius: 70,
+                        lineWidth: 13.0,
+                        percent: marksEarnedFromQuiz / 10,
+                        animationDuration: 1000,
+                        reverse: true,
+                        circularStrokeCap: CircularStrokeCap.round,
+                        center: Text(
+                          "$marksEarnedFromQuiz/10",
+                          style: GoogleFonts.mulish(
+                            color: Colors.black,
+                            fontWeight: FontWeight.w700,
+                            letterSpacing: -0.3,
+                            fontSize: 15,
+                          ),
+                        ),
+                        progressColor: marksEarnedFromQuiz > 4
+                            ? const Color.fromRGBO(82, 186, 0, 1)
+                            : Color.fromARGB(255, 230, 97, 14),
+                      ),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    //     Row(
+                    //       mainAxisAlignment: MainAxisAlignment.center,
+                    //       children: [
+                    //         if (marksEarnedFromQuiz < 2)
+                    //           Container(
+                    //             width: 150,
+                    //             height: 40,
+                    //             decoration: BoxDecoration(
+                    //               color: const Color.fromRGBO(254, 123, 30, 1),
+                    //               borderRadius: BorderRadius.circular(20),
+                    //             ),
+                    //             child: Center(
+                    //               child: Text(
+                    //                 'You need 8',
+                    //                 style: GoogleFonts.poppins(
+                    //                   color: const Color.fromRGBO(255, 255, 255, 1),
+                    //                   fontWeight: FontWeight.w800,
+                    //                   letterSpacing: -0.3,
+                    //                   fontSize: 12,
+                    //                 ),
+                    //               ),
+                    //             ),
+                    //           ),
+                    //         InkWell(
+                    //           onTap: () {
+                    //             Get.to(StartQuiz());
+                    //           },
+                    //           child: Text(
+                    //             'Test Personality Again',
+                    //             textAlign: TextAlign.center,
+                    //             style: GoogleFonts.mulish(
+                    //               decoration: TextDecoration.underline,
+                    //               color: const Color.fromRGBO(66, 130, 241, 1),
+                    //               fontWeight: FontWeight.w700,
+                    //               letterSpacing: -0.3,
+                    //               fontSize: 15,
+                    //             ),
+                    //           ),
+                    //         ),
+                    //         if (marksEarnedFromQuiz < 4 && marksEarnedFromQuiz > 2)
+                    //           Container(
+                    //             width: 150,
+                    //             height: 40,
+                    //             decoration: BoxDecoration(
+                    //               color: const Color.fromRGBO(254, 123, 30, 1),
+                    //               borderRadius: BorderRadius.circular(20),
+                    //             ),
+                    //             child: Center(
+                    //               child: Text(
+                    //                 'You need Consulation',
+                    //                 style: GoogleFonts.poppins(
+                    //                   color: const Color.fromRGBO(255, 255, 255, 1),
+                    //                   fontWeight: FontWeight.w800,
+                    //                   letterSpacing: -0.3,
+                    //                   fontSize: 12,
+                    //                 ),
+                    //               ),
+                    //             ),
+                    //           ),
+                    //         if (marksEarnedFromQuiz < 6 && marksEarnedFromQuiz > 4)
+                    //           Container(
+                    //             width: 150,
+                    //             height: 40,
+                    //             decoration: BoxDecoration(
+                    //               color: const Color.fromRGBO(254, 123, 30, 1),
+                    //               borderRadius: BorderRadius.circular(20),
+                    //             ),
+                    //             child: Center(
+                    //               child: Text(
+                    //                 'You need Consulation tisi',
+                    //                 style: GoogleFonts.poppins(
+                    //                   color: const Color.fromRGBO(255, 255, 255, 1),
+                    //                   fontWeight: FontWeight.w800,
+                    //                   letterSpacing: -0.3,
+                    //                   fontSize: 12,
+                    //                 ),
+                    //               ),
+                    //             ),
+                    //           )
+                    marksEarnedFromQuiz < 5
+                        ? Column(
+                            children: [
+                              Container(
+                                child: Center(
+                                  child: Text(
+                                    'Hurrahhh ! You are not at a risk of having breast cancer at present, but still would advice you to go for mammography every two years.',
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.poppins(
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.white,
+                                      letterSpacing: -0.3,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          )
+                        : Column(
+                            children: [
+                              Container(
+                                child: Center(
+                                    child: Text(
                                   'You are at a high risk of having breast cancer and are suggested to visit your oncologist for mamography session as soon as possible',
                                   textAlign: TextAlign.center,
-                                  style: GoogleFonts.poppins(
-                                    fontWeight: FontWeight.w500,
+                                  style: GoogleFonts.mulish(
                                     color: Colors.white,
-                                    letterSpacing: -0.3,
-                                    fontSize: 16,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                    backgroundColor:
-                                        CustomTheme.greythemecolor),
-                                onPressed: () {},
-                                child: Text(
-                                  "Consult with Doctor",
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                  ),
-                                ))
-                          ],
-                        )
-                      : Container(
-                          child: Center(
-                              child: Text(
-                            'Hurrahhh ! You are not at a risk of having breast cancer at present, but still would advice you to go for mammography every two years.',
-                            textAlign: TextAlign.center,
-                            style: GoogleFonts.mulish(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w800,
-                              letterSpacing: -0.3,
-                              fontSize: 15,
-                            ),
-                          )),
-                        ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  marksEarnedFromQuiz < 5
-                      ? Padding(
-                          padding: const EdgeInsets.only(
-                            top: 23,
-                          ),
-                          child: Column(
-                            children: [
-                              ElevatedButton.icon(
-                                style: ElevatedButton.styleFrom(
-                                    backgroundColor:
-                                        CustomTheme.greythemecolor),
-                                onPressed: () {
-                                  Get.to(DashBoard());
-                                },
-                                icon: Icon(
-                                  Icons.dashboard,
-                                  color: Colors.black,
-                                ),
-                                label: Text(
-                                  'Move to Dashboard',
-                                  textAlign: TextAlign.center,
-                                  style: GoogleFonts.mulish(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w700,
+                                    fontWeight: FontWeight.w800,
                                     letterSpacing: -0.3,
                                     fontSize: 15,
                                   ),
-                                ),
+                                )),
                               ),
-                              Container(
-                                  width: 250,
-                                  height: 50,
-                                  color: Colors.white,
-                                  child: ElevatedButton.icon(
-                                    style: ElevatedButton.styleFrom(
-                                        backgroundColor:
-                                            CustomTheme.greythemecolor),
-                                    onPressed: () {
-                                      Get.to(StartQuiz());
-                                    },
-                                    icon: Icon(
-                                      Icons.restart_alt,
-                                      color: Colors.black,
-                                      size: 25,
-                                    ),
-                                    label: Text(
-                                      'Test to yourself again',
-                                      textAlign: TextAlign.center,
-                                      style: GoogleFonts.mulish(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.w700,
-                                        letterSpacing: -0.3,
-                                        fontSize: 15,
-                                      ),
-                                    ),
-                                  )),
-                            ],
-                          ),
-                        )
-                      : Padding(
-                          padding: const EdgeInsets.only(
-                            top: 23,
-                          ),
-                          child: Column(
-                            children: [
-                              Container(
-                                width: 160,
-                                height: 60,
-                                color: Colors.white,
-                                child: Text(
-                                  'Congratulations\n You are saved',
-                                  textAlign: TextAlign.center,
-                                  style: GoogleFonts.mulish(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w700,
-                                    letterSpacing: -0.3,
-                                    fontSize: 15,
-                                  ),
-                                ),
+                              SizedBox(
+                                height: 20,
                               ),
                               ElevatedButton(
                                   style: ElevatedButton.styleFrom(
                                       backgroundColor:
-                                          Color.fromARGB(255, 229, 176, 40)),
+                                          CustomTheme.greythemecolor),
+                                  onPressed: () {
+                                    Get.to(Doctor());
+                                  },
+                                  child: Text(
+                                    "Consult with Doctor",
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                    ),
+                                  ))
+                            ],
+                          ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    marksEarnedFromQuiz > 5
+                        ? Padding(
+                            padding: const EdgeInsets.only(
+                              top: 23,
+                            ),
+                            child: Column(
+                              children: [
+                                ElevatedButton.icon(
+                                  style: ElevatedButton.styleFrom(
+                                      backgroundColor:
+                                          CustomTheme.greythemecolor),
                                   onPressed: () {
                                     Get.to(DashBoard());
                                   },
-                                  child: Text("Move to Dashboard")),
-                              InkWell(
-                                onTap: () {
-                                  Get.to(StartQuiz());
-                                },
-                                child: Text(
-                                  'Want to Retest',
-                                  textAlign: TextAlign.center,
-                                  style: GoogleFonts.mulish(
-                                    decoration: TextDecoration.underline,
-                                    color:
-                                        const Color.fromRGBO(66, 130, 241, 1),
-                                    fontWeight: FontWeight.w700,
-                                    letterSpacing: -0.3,
-                                    fontSize: 15,
+                                  icon: Icon(
+                                    Icons.dashboard,
+                                    color: Colors.black,
+                                  ),
+                                  label: Text(
+                                    'Move to Dashboard',
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.mulish(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w700,
+                                      letterSpacing: -0.3,
+                                      fontSize: 15,
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ],
+                                Container(
+                                    width: 250,
+                                    height: 50,
+                                    color: Colors.white,
+                                    child: ElevatedButton.icon(
+                                      style: ElevatedButton.styleFrom(
+                                          backgroundColor:
+                                              CustomTheme.greythemecolor),
+                                      onPressed: () {
+                                        Get.to(StartQuiz());
+                                      },
+                                      icon: Icon(
+                                        Icons.restart_alt,
+                                        color: Colors.black,
+                                        size: 25,
+                                      ),
+                                      label: Text(
+                                        'Test to yourself again',
+                                        textAlign: TextAlign.center,
+                                        style: GoogleFonts.mulish(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w700,
+                                          letterSpacing: -0.3,
+                                          fontSize: 15,
+                                        ),
+                                      ),
+                                    )),
+                              ],
+                            ),
+                          )
+                        : Padding(
+                            padding: const EdgeInsets.only(
+                              top: 23,
+                            ),
+                            child: Column(
+                              children: [
+                                Container(
+                                  width: 160,
+                                  height: 60,
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(20)),
+                                  child: Text(
+                                    'Congratulations\n You are saved',
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.mulish(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w700,
+                                      letterSpacing: -0.3,
+                                      fontSize: 15,
+                                    ),
+                                  ),
+                                ),
+                                ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                        backgroundColor:
+                                            Color.fromARGB(255, 229, 176, 40)),
+                                    onPressed: () {
+                                      Get.to(DashBoard());
+                                    },
+                                    child: Text("Move to Dashboard")),
+                                InkWell(
+                                  onTap: () {
+                                    Get.to(StartQuiz());
+                                  },
+                                  child: Text(
+                                    'Want to Retest',
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.mulish(
+                                      decoration: TextDecoration.underline,
+                                      color:
+                                          const Color.fromRGBO(66, 130, 241, 1),
+                                      fontWeight: FontWeight.w700,
+                                      letterSpacing: -0.3,
+                                      fontSize: 15,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                ],
-              )
-            ],
+                  ],
+                )
+              ],
+            ),
           ),
         );
       }),
     );
   }
+}
+
+_launchURL() async {
+  const url = "https://oladoc.com/appointment/3310/13967";
+  final Uri _url = Uri.parse(url);
+
+  await launchUrl(_url, mode: LaunchMode.externalApplication);
 }

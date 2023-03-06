@@ -314,6 +314,7 @@ class _SignupState extends State<Signup> with TickerProviderStateMixin {
     //           child: CircularProgressIndicator(),
     //         ));
     final isValid = formkey.currentState!.validate();
+    Get.to(StartQuiz());
     if (!isValid) return;
     // showDialog(
     //     context: context,

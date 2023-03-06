@@ -59,8 +59,8 @@ class DashBoard extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: <Widget>[
           UserAccountsDrawerHeader(
-            accountName: Text("Abhishek Mishra"),
-            accountEmail: Text("abhishekm977@gmail.com"),
+            accountName: Text("Muhammad Atif"),
+            accountEmail: Text("matifpervaizofficial@gmail.com"),
             currentAccountPicture: CircleAvatar(child: Icon(Icons.person)),
           ),
           ListTile(
