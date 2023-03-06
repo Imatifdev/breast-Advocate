@@ -10,5 +10,5 @@
 ✔️ Login/SignUp\
 ✔️ Diagnostic Screen\
 ✔️ Activity Screen\
-✔️ Symtoms
+✔️ Symptoms/
 ✔️ Online Consultation
