@@ -21,7 +21,7 @@
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/MugheesMb/dyslexic_app.git
+$ git clone https://github.com/MugheesMb/Pink-Girl.git
 
 # Go into the repository
 $ cd dyslexic_app
