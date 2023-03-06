@@ -24,7 +24,7 @@
 $ git clone https://github.com/MugheesMb/Pink-Girl.git
 
 # Go into the repository
-$ cd dyslexic_app
+$ cd Pink-Girl
 
 # Open project in VS code
 $ code .
