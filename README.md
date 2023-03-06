@@ -43,7 +43,7 @@ $ flutter run
 
 
 
-  # and if you are having any trouble in ruuning this app just email us and we'll help you ASAP..!
+  #### and if you are having any trouble in ruuning this app just email us and we'll help you ASAP..!
 
 ```
 # mr.mugy4@gmail.com
