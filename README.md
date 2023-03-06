@@ -36,3 +36,7 @@ $ flutter pub get
 $ flutter run
 
 ```
+
+<h3 align="center"> # Well to run the project we need to connect firebase within our app So , for that goto firebase website https://firebase.google.com/  and make account and setup your firebase
+,
+
