@@ -150,7 +150,7 @@ class Symtoms extends StatelessWidget {
                   foregroundBuilder: (context, state, child) => child!,
                   backgroundChild: Center(
                       child: Text(
-                    '     Slide to learn more symtoms...',
+                    '     Slide to learn more symtoms....',
                   )),
                   backgroundBuilder: (context, state, child) => ClipRect(
                       child: OverflowBox(
