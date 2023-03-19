@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, depend_on_referenced_packages, unused_import
 
 import 'package:flutter/material.dart';
+import 'package:pinkgirl/screens/chat.dart';
 import 'package:pinkgirl/screens/dashboard.dart';
 import 'package:pinkgirl/utilities/Mytheme.dart';
 import 'package:provider/provider.dart';
@@ -28,7 +29,7 @@ class MainPage extends StatelessWidget {
       child: GetMaterialApp(
         //theme: ThemeData(canvasColor: CustomTheme.pinkthemecolor),
         navigatorKey: navigatorkey,
-        home: SplashScreen(),
+        home: MyChat(),
         debugShowCheckedModeBanner: false,
       ),
     );
