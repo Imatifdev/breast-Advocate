@@ -70,6 +70,7 @@ dev_dependencies:
   accordion: ^2.5.1
   youtube_player_iframe: ^4.0.4
   url_launcher: ^6.1.10
+  zego_zimkit: ^1.1.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
