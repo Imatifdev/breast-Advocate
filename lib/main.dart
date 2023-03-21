@@ -31,7 +31,7 @@ class MainPage extends StatelessWidget {
       child: GetMaterialApp(
         //theme: ThemeData(canvasColor: CustomTheme.pinkthemecolor),
         navigatorKey: navigatorkey,
-        home: MyChat(),
+        home: SplashScreen(),
         debugShowCheckedModeBanner: false,
       ),
     );
