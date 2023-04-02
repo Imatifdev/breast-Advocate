@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
+import 'package:pinkgirl/screens/auth/loginPage.dart';
 import 'package:provider/provider.dart';
 import '../../controller/index_controller.dart';
 import 'home_screen.dart';
@@ -42,8 +43,8 @@ class _StartQuizState extends State<StartQuiz> {
               actions: [
                 TextButton(
                   onPressed: () {
-                    Navigator.pushReplacement(context,
-                        MaterialPageRoute(builder: (context) => exit(0)));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => LoginPage()));
                   },
                   child: const Text(
                     'Yes',
@@ -142,7 +143,7 @@ class _StartQuizState extends State<StartQuiz> {
                 Lottie.asset(
                   'Assets/2.json',
                   width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height * .5,
+                  height: MediaQuery.of(context).size.height * .4,
                   fit: BoxFit.contain,
                 ),
               ],

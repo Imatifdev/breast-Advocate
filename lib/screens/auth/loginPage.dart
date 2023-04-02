@@ -11,7 +11,9 @@ import 'package:email_validator/email_validator.dart';
 import 'package:pinkgirl/screens/auth/signuppage.dart';
 import 'package:get/get.dart';
 
+import '../../bottomnav.dart';
 import '../../utilities/Mytheme.dart';
+import '../../utilities/methods.dart';
 import '../dashboard.dart';
 
 class LoginPage extends StatefulWidget {
@@ -112,176 +114,199 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Scaffold(
-      backgroundColor: CustomTheme.pinkthemecolor,
-      body: ScrollConfiguration(
-        behavior: MyBehavior(),
-        child: SingleChildScrollView(
-          child: SizedBox(
-            height: size.height,
-            child: Stack(
-              children: [
-                Positioned(
-                  top: size.height * (animation2.value + .58),
-                  left: size.width * .21,
-                  child: CustomPaint(
-                    painter: MyPainter(50),
+    return GestureDetector(
+      onTap: () {
+        FocusScopeNode currentFocus = FocusScope.of(context);
+        if (!currentFocus.hasPrimaryFocus) {
+          currentFocus.unfocus();
+        }
+      },
+      child: Scaffold(
+        backgroundColor: CustomTheme.pinkthemecolor,
+        body: ScrollConfiguration(
+          behavior: MyBehavior(),
+          child: SingleChildScrollView(
+            child: SizedBox(
+              height: size.height,
+              child: Stack(
+                children: [
+                  Positioned(
+                    top: size.height * (animation2.value + .58),
+                    left: size.width * .21,
+                    child: CustomPaint(
+                      painter: MyPainter(50),
+                    ),
                   ),
-                ),
-                Positioned(
-                  top: size.height * .98,
-                  left: size.width * .1,
-                  child: CustomPaint(
-                    painter: MyPainter(animation4.value - 30),
+                  Positioned(
+                    top: size.height * .98,
+                    left: size.width * .1,
+                    child: CustomPaint(
+                      painter: MyPainter(animation4.value - 30),
+                    ),
                   ),
-                ),
-                Positioned(
-                  top: size.height * .5,
-                  left: size.width * (animation2.value + .8),
-                  child: CustomPaint(
-                    painter: MyPainter(30),
+                  Positioned(
+                    top: size.height * .5,
+                    left: size.width * (animation2.value + .8),
+                    child: CustomPaint(
+                      painter: MyPainter(30),
+                    ),
                   ),
-                ),
-                Positioned(
-                  top: size.height * animation3.value,
-                  left: size.width * (animation1.value + .1),
-                  child: CustomPaint(
-                    painter: MyPainter(60),
+                  Positioned(
+                    top: size.height * animation3.value,
+                    left: size.width * (animation1.value + .1),
+                    child: CustomPaint(
+                      painter: MyPainter(60),
+                    ),
                   ),
-                ),
-                Positioned(
-                  top: size.height * .1,
-                  left: size.width * .8,
-                  child: CustomPaint(
-                    painter: MyPainter(animation4.value),
+                  Positioned(
+                    top: size.height * .1,
+                    left: size.width * .8,
+                    child: CustomPaint(
+                      painter: MyPainter(animation4.value),
+                    ),
                   ),
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(top: size.height * .1),
-                      // child: Lottie.asset(
-                      //   'Assets/auth.json',
-                      //   width: 350,
-                      //   height: 350,
-                      // ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 30),
-                        child: Text(
-                          'Welcome Back!\nHave a Good Day',
-                          style: TextStyle(
-                            color: Colors.black.withOpacity(.7),
-                            fontSize: 40,
-                            fontWeight: FontWeight.bold,
-                            letterSpacing: 1,
-                            wordSpacing: 4,
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(top: size.height * .1),
+                        // child: Lottie.asset(
+                        //   'Assets/auth.json',
+                        //   width: 350,
+                        //   height: 350,
+                        // ),
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 30),
+                          child: Text(
+                            'Welcome Back!\nHave a Good Day',
+                            style: TextStyle(
+                              color: Colors.black.withOpacity(.7),
+                              fontSize: 35,
+                              fontWeight: FontWeight.bold,
+                              letterSpacing: 1,
+                              wordSpacing: 4,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 70,
-                    ),
-                    Form(
-                      key: formkey,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      SizedBox(
+                        height: 70,
+                      ),
+                      Form(
+                        key: formkey,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            MyformField(
+                              validator: (String? email) {
+                                if (email!.isEmpty) {
+                                  return 'enter email';
+                                }
+                              },
+                              isEmail: true,
+                              isPassword: false,
+                              controller: emailcontroller,
+                              icon: Icons.email_outlined,
+                              hintText: 'Email...',
+                            ),
+
+                            SizedBox(
+                              height: 40,
+                            ),
+                            MyformField(
+                              validator: (String? password) {
+                                if (password!.isEmpty) {
+                                  return 'Password empty';
+                                } else if (password.length < 6) {
+                                  return 'PasswordShort';
+                                }
+                                return null;
+                              },
+                              isEmail: false,
+                              isPassword: true,
+                              controller: passcontroller,
+                              icon: Icons.lock_outline,
+                              hintText: 'Password...',
+                            ),
+
+                            SizedBox(
+                              height: 40,
+                            ),
+
+                            // component1(
+                            //     Icons.email_outlined, 'Email...', false, true),
+                            // component1(
+                            //     Icons.lock_outline, 'Password...', true, false),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                component2(
+                                  'LOGIN',
+                                  2.58,
+                                  () {
+                                    logIn(emailcontroller.text,
+                                            passcontroller.text)
+                                        .then((user) {
+                                      if (user != null) {
+                                        Fluttertoast.showToast(msg: 'Login ');
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    BottomNav()));
+                                      }
+                                      if (user == null) {
+                                        Fluttertoast.showToast(
+                                            msg: 'Enter Login Credentials ');
+                                        // Get.to(() => DashBoard());
+                                      }
+                                    });
+                                    // Fluttertoast.showToast(msg: 'Login ');
+                                  },
+                                ),
+                                SizedBox(width: size.width / 20),
+                                component2(
+                                  'Forgotten password!',
+                                  2.58,
+                                  () {
+                                    HapticFeedback.lightImpact();
+                                    Fluttertoast.showToast(
+                                        msg:
+                                            'Forgotten password button pressed');
+                                  },
+                                ),
+                              ],
+                            ),
+                            Lottie.asset(
+                              'Assets/auth.json',
+                              width: 200,
+                              height: 200,
+                            ),
+                          ],
+                        ),
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          MyformField(
-                            validator: (String? email) {
-                              if (email!.isEmpty) {
-                                return 'enter email';
-                              }
-                            },
-                            isEmail: true,
-                            isPassword: false,
-                            controller: emailcontroller,
-                            icon: Icons.email_outlined,
-                            hintText: 'Email...',
+                          Center(
+                            child: component2(
+                              'Create a new Account',
+                              2,
+                              () {
+                                Get.to(Signup());
+                                HapticFeedback.lightImpact();
+                                Fluttertoast.showToast(
+                                    msg: 'Create a new account button pressed');
+                              },
+                            ),
                           ),
-
-                          SizedBox(
-                            height: 40,
-                          ),
-                          MyformField(
-                            validator: (String? password) {
-                              if (password!.isEmpty) {
-                                return 'Password empty';
-                              } else if (password.length < 6) {
-                                return 'PasswordShort';
-                              }
-                              return null;
-                            },
-                            isEmail: false,
-                            isPassword: true,
-                            controller: passcontroller,
-                            icon: Icons.lock_outline,
-                            hintText: 'Password...',
-                          ),
-
-                          SizedBox(
-                            height: 40,
-                          ),
-
-                          // component1(
-                          //     Icons.email_outlined, 'Email...', false, true),
-                          // component1(
-                          //     Icons.lock_outline, 'Password...', true, false),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              component2(
-                                'LOGIN',
-                                2.58,
-                                () {
-                                  siginmethod();
-                                  HapticFeedback.lightImpact();
-                                  Fluttertoast.showToast(
-                                      msg: 'Login button pressed');
-                                },
-                              ),
-                              SizedBox(width: size.width / 20),
-                              component2(
-                                'Forgotten password!',
-                                2.58,
-                                () {
-                                  HapticFeedback.lightImpact();
-                                  Fluttertoast.showToast(
-                                      msg: 'Forgotten password button pressed');
-                                },
-                              ),
-                            ],
-                          ),
-                          Lottie.asset(
-                            'Assets/auth.json',
-                            width: 200,
-                            height: 200,
-                          ),
+                          SizedBox(height: size.height * .05),
                         ],
                       ),
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Center(
-                          child: component2(
-                            'Create a new Account',
-                            2,
-                            () {
-                              Get.to(Signup());
-                              HapticFeedback.lightImpact();
-                              Fluttertoast.showToast(
-                                  msg: 'Create a new account button pressed');
-                            },
-                          ),
-                        ),
-                        SizedBox(height: size.height * .05),
-                      ],
-                    ),
-                  ],
-                ),
-              ],
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -315,24 +340,6 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
         ),
       ),
     );
-  }
-
-  Future siginmethod() async {
-    final isValid = formkey.currentState!.validate();
-    Get.to(DashBoard());
-    if (!isValid) return;
-    // showDialog(
-    //     context: context,
-    //     builder: (context) => Center(
-    //           child: CircularProgressIndicator(),
-    //         ));
-    try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: emailcontroller.text.trim(),
-          password: passcontroller.text.trim());
-    } on FirebaseAuthException catch (e) {
-      print(e.toString());
-    }
   }
 }
 

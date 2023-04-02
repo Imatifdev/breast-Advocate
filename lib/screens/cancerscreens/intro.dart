@@ -65,11 +65,12 @@ class Intro extends StatelessWidget {
                 Image.asset("Assets/intro.jpeg"),
                 YoutubeVideo("https://www.youtube.com/watch?v=KyeiZJrWrys"),
                 Accordion(
+                  disableScrolling: false,
                   contentBorderColor: Color.fromARGB(255, 213, 81, 125),
-                  maxOpenSections: 2,
+                  maxOpenSections: 1,
                   headerBackgroundColorOpened: Colors.pink,
                   //scaleWhenAnimating: true,
-                  openAndCloseAnimation: true,
+                  openAndCloseAnimation: false,
                   headerPadding: const EdgeInsets.only(
                       left: 10, top: 10, bottom: 10, right: 10),
                   children: [

@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import '../bottomnav.dart';
+import '../utilities/Mytheme.dart';
 import 'auth/loginPage.dart';
 import 'auth/signuppage.dart';
 import 'dashboard.dart';
@@ -23,7 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   _navigateToFirstPage() async {
-    await Future.delayed(const Duration(seconds: 8), () {});
+    await Future.delayed(const Duration(seconds: 4), () {});
     // ignore: use_build_context_synchronously
     Navigator.pushReplacement(
         context,
@@ -38,7 +40,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   child: Text("Something Went wrong"),
                 );
               } else if (snapshot.hasData) {
-                return DashBoard();
+                return BottomNav();
               } else {
                 return Signup();
               }
@@ -53,25 +55,34 @@ class _SplashScreenState extends State<SplashScreen> {
       backgroundColor: Colors.white,
       body: Center(
         child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            mainAxisAlignment: MainAxisAlignment.end,
+            //crossAxisAlignment: CrossAxisAlignment.end,
+            //mainAxisAlignment: MainAxisAlignment.end,
             children: [
+              SizedBox(
+                height: 100,
+              ),
               Center(
                 child: Lottie.asset(
                   'Assets/auth.json',
-                  width: 200,
-                  height: 200,
+                  width: 400,
+                  height: 400,
                   fit: BoxFit.contain,
                 ),
               ),
-              Expanded(
-                child: Lottie.asset(
-                  'Assets/splash.json',
-                  width: MediaQuery.of(context).size.width * .9,
-                  height: MediaQuery.of(context).size.height * .7,
-                  fit: BoxFit.contain,
-                ),
+              Text(
+                "Breast",
+                style: TextStyle(
+                    fontSize: 40,
+                    color: CustomTheme.pinkthemecolor,
+                    fontWeight: FontWeight.bold),
               ),
+              Text(
+                "Advocate",
+                style: TextStyle(
+                    fontSize: 55,
+                    color: CustomTheme.pinkthemecolor,
+                    fontWeight: FontWeight.bold),
+              )
             ]),
       ),
     );

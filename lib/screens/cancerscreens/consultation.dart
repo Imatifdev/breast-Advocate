@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pinkgirl/screens/cancerscreens/docdetail.dart';
 import 'package:get/get.dart';
@@ -13,10 +14,18 @@ class Doctor extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        iconTheme: IconThemeData(color: CustomTheme.pinkthemecolor),
-      ),
+          backgroundColor: Colors.white,
+          elevation: 0,
+          leading: InkWell(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: Icon(
+              CupertinoIcons.left_chevron,
+              size: 40,
+              color: CustomTheme.pinkthemecolor,
+            ),
+          )),
       backgroundColor: Colors.white,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),

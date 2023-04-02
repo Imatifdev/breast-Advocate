@@ -9,6 +9,7 @@ import 'package:pinkgirl/screens/dashboard.dart';
 import 'package:pinkgirl/utilities/Mytheme.dart';
 import 'package:provider/provider.dart';
 import '../../../controller/index_controller.dart';
+import '../../bottomnav.dart';
 import 'start_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -331,7 +332,10 @@ class ResultPage extends StatelessWidget {
                                       backgroundColor:
                                           CustomTheme.greythemecolor),
                                   onPressed: () {
-                                    Get.to(DashBoard());
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => BottomNav()));
                                   },
                                   icon: Icon(
                                     Icons.dashboard,

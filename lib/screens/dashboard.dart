@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:lottie/lottie.dart';
 import 'package:pinkgirl/screens/quiz/start_screen.dart';
+import 'package:pinkgirl/screens/splash_screen.dart';
+import 'package:pinkgirl/utilities/methods.dart';
 
 import '../models/imageslist.dart';
 import '../utilities/Mytheme.dart';
@@ -18,37 +20,15 @@ import 'cancerscreens/intro.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'cancerscreens/symptoms.dart';
-import 'package:url_launcher/url_launcher.dart';
 
-class DashBoard extends StatelessWidget {
-  final makeBottom = Container(
-    height: 55,
-    child: BottomAppBar(
-      height: 55,
-      color: Colors.pink.shade100,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          Column(
-            children: [
-              IconButton(
-                icon: Icon(Icons.person),
-                onPressed: () {},
-              ),
-            ],
-          ),
-          Column(
-            children: [
-              IconButton(
-                icon: Icon(Icons.add),
-                onPressed: () {},
-              ),
-            ],
-          ),
-        ],
-      ),
-    ),
-  );
+import 'chat/chathome.dart';
+
+class DashBoard extends StatefulWidget {
+  @override
+  State<DashBoard> createState() => _DashBoardState();
+}
+
+class _DashBoardState extends State<DashBoard> {
   @override
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser;
@@ -56,33 +36,54 @@ class DashBoard extends StatelessWidget {
       drawer: Drawer(
           child: ListView(
         // Important: Remove any padding from the ListView.
-        padding: EdgeInsets.zero,
+        padding: EdgeInsets.all(20),
         children: <Widget>[
-          UserAccountsDrawerHeader(
-            accountName: Text("Muhammad Atif"),
-            accountEmail: Text("matifpervaizofficial@gmail.com"),
-            currentAccountPicture: CircleAvatar(child: Icon(Icons.person)),
+          SizedBox(
+            height: 50,
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CircleAvatar(
+                radius: 50,
+                child: Image(image: AssetImage('Assets/user.png')),
+              ),
+            ],
+          ),
+          Text(
+            "Account",
+            style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+          ),
+          Text(
+            "Muhammad",
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
+          ),
+          Divider(
+            thickness: 2,
           ),
           ListTile(
-            leading: Icon(Icons.home),
-            title: Text("Home"),
             onTap: () {
-              Get.to(DashBoard());
+              logOut(context);
             },
+            leading: CircleAvatar(
+              backgroundImage: AssetImage('Assets/logout.png'),
+            ),
+            title: Text(
+              " Logout to Account",
+              style: TextStyle(fontSize: 18),
+            ),
           ),
           ListTile(
-            leading: Icon(Icons.local_hospital_outlined),
-            title: Text("Consultation"),
             onTap: () {
-              Get.to(Doctor());
+              logOut(context);
             },
-          ),
-          ListTile(
-            leading: Icon(Icons.logout),
-            title: Text("Logout"),
-            onTap: () {
-              FirebaseAuth.instance.signOut();
-            },
+            leading: CircleAvatar(
+              backgroundImage: AssetImage('Assets/settings.png'),
+            ),
+            title: Text(
+              " Settings",
+              style: TextStyle(fontSize: 18),
+            ),
           ),
         ],
       )),
@@ -101,7 +102,7 @@ class DashBoard extends StatelessWidget {
           style: TextStyle(fontSize: 24, color: CustomTheme.pinkthemecolor),
         ),
         centerTitle: true,
-        backgroundColor: Colors.white70,
+        backgroundColor: Colors.transparent,
         elevation: 0,
       ),
       // bottomNavigationBar: makeBottom,
@@ -125,14 +126,16 @@ class DashBoard extends StatelessWidget {
                         Text(
                           "Breast Cancer \nStatistics Worldwide",
                           style: TextStyle(
-                              fontSize: 25,
+                              fontSize: 22,
                               fontWeight: FontWeight.bold,
                               color: CustomTheme.pinkthemecolor),
                         ),
-                        Lottie.asset(
-                          'Assets/pinkribbon.json',
-                          width: 100,
-                          height: 100,
+                        Expanded(
+                          child: Lottie.asset(
+                            'Assets/pinkribbon.json',
+                            width: 80,
+                            height: 80,
+                          ),
                         ),
                       ],
                     ),
@@ -201,14 +204,14 @@ class DashBoard extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: Container(
                       child: ListView(
                         shrinkWrap: true,
                         children: [
                           MyCard(
                             title: 'Introduction',
-                            desc: "Get to Know About Breast Cancer",
+                            desc: "Get to Know About Breast\nCancer",
                             image: "Assets/intro.png",
                             onTap: () {
                               Get.to(Intro());
@@ -251,105 +254,105 @@ class DashBoard extends StatelessWidget {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton.extended(
-          backgroundColor: Color.fromARGB(255, 245, 50, 137),
-          icon: Icon(Icons.healing_outlined),
-          onPressed: () {
-            showModalBottomSheet(
-              backgroundColor: Colors.grey.shade100,
-              enableDrag: true,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(20),
-                      topLeft: Radius.circular(20))),
-              context: context,
-              builder: (context) {
-                return Wrap(
-                  children: [
-                    Container(
-                      height: 600,
-                      width: MediaQuery.of(context).size.width,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Center(
-                            child: Lottie.asset(
-                              'Assets/auth.json',
-                              width: 150,
-                              height: 150,
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 20),
-                            child: Divider(
-                              thickness: 2,
-                              height: 20,
-                              color: Colors.grey,
-                            ),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              InkWell(
-                                onTap: () {
-                                  _launchURL();
-                                },
-                                child: Column(
-                                  children: [
-                                    Image.asset(
-                                      "Assets/hsp.png",
-                                      height: 100,
-                                      width: 100,
-                                    ),
-                                    Text(
-                                      "Check Near by \nHospital",
-                                      style: TextStyle(fontSize: 18),
-                                      textAlign: TextAlign.center,
-                                    )
-                                  ],
-                                ),
-                              ),
-                              InkWell(
-                                onTap: () {
-                                  Get.to(Doctor());
-                                },
-                                child: Column(
-                                  children: [
-                                    Image.asset(
-                                      "Assets/doc.png",
-                                      height: 100,
-                                      width: 100,
-                                    ),
-                                    Text(
-                                      "Consult with\n Doctor",
-                                      style: TextStyle(fontSize: 18),
-                                      textAlign: TextAlign.center,
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Text(
-                            "You are braver than you believe, stronger than you seem, smarter than you think, and twice as beautiful as you'd ever imagined.",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontSize: 17,
-                                fontWeight: FontWeight.bold,
-                                color: CustomTheme.pinkthemecolor),
-                          ),
-                        ],
-                      ),
-                    )
-                  ],
-                );
-              },
-            );
-          },
-          label: Text("Get Consultation")),
+      // floatingActionButton: FloatingActionButton.extended(
+      //     backgroundColor: Color.fromARGB(255, 245, 50, 137),
+      //     icon: Icon(Icons.healing_outlined),
+      //     onPressed: () {
+      //       showModalBottomSheet(
+      //         backgroundColor: Colors.grey.shade100,
+      //         enableDrag: true,
+      //         shape: RoundedRectangleBorder(
+      //             borderRadius: BorderRadius.only(
+      //                 topRight: Radius.circular(20),
+      //                 topLeft: Radius.circular(20))),
+      //         context: context,
+      //         builder: (context) {
+      //           return Wrap(
+      //             children: [
+      //               Container(
+      //                 height: 600,
+      //                 width: MediaQuery.of(context).size.width,
+      //                 child: Column(
+      //                   crossAxisAlignment: CrossAxisAlignment.start,
+      //                   children: [
+      //                     Center(
+      //                       child: Lottie.asset(
+      //                         'Assets/auth.json',
+      //                         width: 150,
+      //                         height: 150,
+      //                       ),
+      //                     ),
+      //                     Padding(
+      //                       padding: const EdgeInsets.symmetric(horizontal: 20),
+      //                       child: Divider(
+      //                         thickness: 2,
+      //                         height: 20,
+      //                         color: Colors.grey,
+      //                       ),
+      //                     ),
+      //                     Row(
+      //                       mainAxisAlignment: MainAxisAlignment.spaceAround,
+      //                       children: [
+      //                         InkWell(
+      //                           onTap: () {
+      //                             _launchURL();
+      //                           },
+      //                           child: Column(
+      //                             children: [
+      //                               Image.asset(
+      //                                 "Assets/hsp.png",
+      //                                 height: 100,
+      //                                 width: 100,
+      //                               ),
+      //                               Text(
+      //                                 "Check Near by \nHospital",
+      //                                 style: TextStyle(fontSize: 18),
+      //                                 textAlign: TextAlign.center,
+      //                               )
+      //                             ],
+      //                           ),
+      //                         ),
+      //                         InkWell(
+      //                           onTap: () {
+      //                             Get.to(Doctor());
+      //                           },
+      //                           child: Column(
+      //                             children: [
+      //                               Image.asset(
+      //                                 "Assets/doc.png",
+      //                                 height: 100,
+      //                                 width: 100,
+      //                               ),
+      //                               Text(
+      //                                 "Consult with\n Doctor",
+      //                                 style: TextStyle(fontSize: 18),
+      //                                 textAlign: TextAlign.center,
+      //                               )
+      //                             ],
+      //                           ),
+      //                         ),
+      //                       ],
+      //                     ),
+      //                     SizedBox(
+      //                       height: 20,
+      //                     ),
+      //                     Text(
+      //                       "You are braver than you believe, stronger than you seem, smarter than you think, and twice as beautiful as you'd ever imagined.",
+      //                       textAlign: TextAlign.center,
+      //                       style: TextStyle(
+      //                           fontSize: 17,
+      //                           fontWeight: FontWeight.bold,
+      //                           color: CustomTheme.pinkthemecolor),
+      //                     ),
+      //                   ],
+      //                 ),
+      //               )
+      //             ],
+      //           );
+      //         },
+      //       );
+      //     },
+      //     label: Text("Get Consultation")),
     );
   }
 }
@@ -410,12 +413,4 @@ class MyCard extends StatelessWidget {
       ),
     );
   }
-}
-
-_launchURL() async {
-  const url =
-      "https://www.google.com/maps/search/breast+cancer+hospital+in+lahore/@31.5435477,74.2503422,13z/data=!3m1!4b1?hl=en";
-  final Uri _url = Uri.parse(url);
-
-  await launchUrl(_url, mode: LaunchMode.externalApplication);
 }

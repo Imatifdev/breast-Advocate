@@ -150,7 +150,8 @@ class Symtoms extends StatelessWidget {
                   foregroundBuilder: (context, state, child) => child!,
                   backgroundChild: Center(
                       child: Text(
-                    '     Slide to learn more symtoms....',
+                    '              Slide to learn more symtoms....',
+                    style: TextStyle(fontSize: 16),
                   )),
                   backgroundBuilder: (context, state, child) => ClipRect(
                       child: OverflowBox(
@@ -169,6 +170,9 @@ class Symtoms extends StatelessWidget {
                     controller.reset(); //resets the slider
                   },
                 ),
+              ),
+              SizedBox(
+                height: 100,
               ),
             ],
           ),

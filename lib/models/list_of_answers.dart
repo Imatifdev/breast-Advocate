@@ -13,7 +13,7 @@ const List<String> optionOne = [
 ];
 const List<String> optionThree = [
   '',
-  'Adult above 24',
+  '20 - 24',
   'Breastfeeded before the age of 30 for a period of one year or more',
   'No and don’t have regular exercise as a part of my routine ', // =>Correct Answer For Question NO:3
   'Between 14-16 years ', // =>Correct Answer For Question NO:4
@@ -27,7 +27,7 @@ const List<String> optionThree = [
 List<String> optionTwo = [
   '',
   'Under teenage',
-  'Breastfeeded before the age of 30 for less than a year ', // =>Correct Answer For Question NO:2
+  'Never Breast Feed', // =>Correct Answer For Question NO:2
   'No but have follow a regular exercise as a part of my routine ',
   '14 years or earlier ',
   'I am 51 years and older and still did not reach menstruation ',

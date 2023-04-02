@@ -6,7 +6,9 @@ import 'dart:async';
 import 'dart:ui';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:pinkgirl/utilities/methods.dart';
 
+import '../../bottomnav.dart';
 import '../../utilities/Mytheme.dart';
 import '../dashboard.dart';
 import '../quiz/start_screen.dart';
@@ -114,221 +116,221 @@ class _SignupState extends State<Signup> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Scaffold(
-      backgroundColor: CustomTheme.pinkthemecolor,
-      body: ScrollConfiguration(
-        behavior: MyBehavior(),
-        child: SingleChildScrollView(
-          child: SizedBox(
-            height: size.height,
-            child: Stack(
-              children: [
-                Positioned(
-                  top: size.height * (animation2.value + .58),
-                  left: size.width * .21,
-                  child: CustomPaint(
-                    painter: MyPainter(40),
+    return GestureDetector(
+      onTap: () {
+        FocusScopeNode currentFocus = FocusScope.of(context);
+        if (!currentFocus.hasPrimaryFocus) {
+          currentFocus.unfocus();
+        }
+      },
+      child: Scaffold(
+        backgroundColor: CustomTheme.pinkthemecolor,
+        body: ScrollConfiguration(
+          behavior: MyBehavior(),
+          child: SingleChildScrollView(
+            child: SizedBox(
+              height: size.height,
+              child: Stack(
+                children: [
+                  Positioned(
+                    top: size.height * (animation2.value + .58),
+                    left: size.width * .21,
+                    child: CustomPaint(
+                      painter: MyPainter(40),
+                    ),
                   ),
-                ),
-                Positioned(
-                  top: size.height * .98,
-                  left: size.width * .1,
-                  child: CustomPaint(
-                    painter: MyPainter(animation4.value - 60),
+                  Positioned(
+                    top: size.height * .98,
+                    left: size.width * .1,
+                    child: CustomPaint(
+                      painter: MyPainter(animation4.value - 60),
+                    ),
                   ),
-                ),
-                Positioned(
-                  top: size.height * .5,
-                  left: size.width * (animation2.value + .8),
-                  child: CustomPaint(
-                    painter: MyPainter(30),
+                  Positioned(
+                    top: size.height * .5,
+                    left: size.width * (animation2.value + .8),
+                    child: CustomPaint(
+                      painter: MyPainter(30),
+                    ),
                   ),
-                ),
-                Positioned(
-                  top: size.height * animation3.value,
-                  left: size.width * (animation1.value + .1),
-                  child: CustomPaint(
-                    painter: MyPainter(60),
+                  Positioned(
+                    top: size.height * animation3.value,
+                    left: size.width * (animation1.value + .1),
+                    child: CustomPaint(
+                      painter: MyPainter(60),
+                    ),
                   ),
-                ),
-                Positioned(
-                  top: size.height * .1,
-                  left: size.width * .8,
-                  child: CustomPaint(
-                    painter: MyPainter(animation4.value),
+                  Positioned(
+                    top: size.height * .1,
+                    left: size.width * .8,
+                    child: CustomPaint(
+                      painter: MyPainter(animation4.value),
+                    ),
                   ),
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      flex: 5,
-                      child: Padding(
-                        padding: EdgeInsets.only(top: size.height * .2),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        flex: 5,
                         child: Padding(
-                          padding: const EdgeInsets.only(left: 40),
-                          child: Text(
-                            'Cancer Can\'t, \nBut We Can',
-                            style: TextStyle(
-                              color: Colors.black.withOpacity(.7),
-                              fontSize: 40,
-                              fontWeight: FontWeight.bold,
-                              letterSpacing: 1,
-                              wordSpacing: 4,
+                          padding: EdgeInsets.only(top: size.height * .2),
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 40),
+                            child: Text(
+                              'Cancer Can\'t, \nBut We Can',
+                              style: TextStyle(
+                                color: Colors.black.withOpacity(.7),
+                                fontSize: 40,
+                                fontWeight: FontWeight.bold,
+                                letterSpacing: 1,
+                                wordSpacing: 4,
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                    Expanded(
-                      flex: 8,
-                      child: Form(
-                        key: formkey,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            MyformField(
-                              validator: (String? email) {
-                                if (email!.isEmpty) {
-                                  return 'enter name';
-                                }
-                              },
-                              isEmail: true,
-                              isPassword: false,
-                              controller: name,
-                              icon: Icons.person,
-                              hintText: 'Name',
-                            ),
-                            MyformField(
-                              validator: (String? email) {
-                                if (email!.isEmpty) {
-                                  return 'enter email';
-                                }
-                              },
-                              isEmail: true,
-                              isPassword: false,
-                              controller: emailcontroller,
-                              icon: Icons.email_outlined,
-                              hintText: 'Email...',
-                            ),
-                            MyformField(
-                              validator: (String? pass) {
-                                if (pass!.length < 8) {
-                                  return 'enter 8 digits';
-                                }
-                              },
-                              isEmail: false,
-                              isPassword: true,
-                              controller: passcontroller,
-                              icon: Icons.lock_outline,
-                              hintText: 'Password...',
-                            ),
-                            component2(
-                              'Signup',
-                              2,
-                              () {
-                                signupmethod();
-                                //await Get.to(StartQuiz());
+                      Expanded(
+                        flex: 8,
+                        child: Form(
+                          key: formkey,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              MyformField(
+                                validator: (String? email) {
+                                  if (email!.isEmpty) {
+                                    return 'enter name';
+                                  }
+                                },
+                                isEmail: true,
+                                isPassword: false,
+                                controller: name,
+                                icon: Icons.person,
+                                hintText: 'Name',
+                              ),
+                              MyformField(
+                                validator: (String? email) {
+                                  if (email!.isEmpty) {
+                                    return 'enter email';
+                                  }
+                                },
+                                isEmail: true,
+                                isPassword: false,
+                                controller: emailcontroller,
+                                icon: Icons.email_outlined,
+                                hintText: 'Email...',
+                              ),
+                              MyformField(
+                                validator: (String? pass) {
+                                  if (pass!.length < 8) {
+                                    return 'enter 8 digits';
+                                  }
+                                },
+                                isEmail: false,
+                                isPassword: true,
+                                controller: passcontroller,
+                                icon: Icons.lock_outline,
+                                hintText: 'Password...',
+                              ),
+                              component2(
+                                'Signup',
+                                2,
+                                () {
+                                  createAccount(name.text, emailcontroller.text,
+                                          passcontroller.text)
+                                      .then((user) {
+                                    if (user != null) {
+                                      Fluttertoast.showToast(msg: 'Login ');
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  StartQuiz()));
+                                    }
+                                    if (user == null) {
+                                      Fluttertoast.showToast(
+                                          msg: 'Enter Credentials ');
+                                      // Get.to(() => DashBoard());
+                                    }
+                                  });
+                                  //await Get.to(StartQuiz());
 
-                                HapticFeedback.lightImpact();
-                                Fluttertoast.showToast(
-                                    msg: 'Create a new account button pressed');
-                              },
-                            ),
+                                  HapticFeedback.lightImpact();
+                                  Fluttertoast.showToast(msg: 'Processing');
+                                },
+                              ),
 
-                            // component1(
-                            //     Icons.email_outlined, 'Email...', false, true),
-                            // component1(
-                            //     Icons.lock_outline, 'Password...', true, false),
+                              // component1(
+                              //     Icons.email_outlined, 'Email...', false, true),
+                              // component1(
+                              //     Icons.lock_outline, 'Password...', true, false),
 
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Text(
-                                  "Already Have an Account?",
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      color: Colors.black.withOpacity(.7),
-                                      fontWeight: FontWeight.normal),
-                                ),
-                                GestureDetector(
-                                  onTap: () {
-                                    Get.to(LoginPage());
-                                  },
-                                  child: Text(
-                                    "Login",
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Text(
+                                    "Already Have an Account?",
                                     style: TextStyle(
-                                        decorationStyle:
-                                            TextDecorationStyle.solid,
-                                        fontStyle: FontStyle.italic,
-                                        fontSize: 23,
+                                        fontSize: 20,
                                         color: Colors.black.withOpacity(.7),
-                                        fontWeight: FontWeight.bold),
+                                        fontWeight: FontWeight.normal),
                                   ),
-                                ),
-                              ],
-                            ),
-                            // Row(
-                            //   mainAxisAlignment: MainAxisAlignment.center,
-                            //   children: [
-                            //     component2(
-                            //       'LOGIN',
-                            //       2.58,
-                            //       () {
-                            //         siginmethod();
-                            //         HapticFeedback.lightImpact();
-                            //         Fluttertoast.showToast(
-                            //             msg: 'Login button pressed');
-                            //       },
-                            //     ),
-                            //     SizedBox(width: size.width / 20),
-                            //     component2(
-                            //       'Forgotten password!',
-                            //       2.58,
-                            //       () {
-                            //         HapticFeedback.lightImpact();
-                            //         Fluttertoast.showToast(
-                            //             msg: 'Forgotten password button pressed');
-                            //       },
-                            //     ),
-                            //   ],
-                            // ),
-                          ],
+                                  GestureDetector(
+                                    onTap: () {
+                                      Get.to(LoginPage());
+                                    },
+                                    child: Text(
+                                      "Login",
+                                      style: TextStyle(
+                                          decorationStyle:
+                                              TextDecorationStyle.solid,
+                                          fontStyle: FontStyle.italic,
+                                          fontSize: 23,
+                                          color: Colors.black.withOpacity(.7),
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              // Row(
+                              //   mainAxisAlignment: MainAxisAlignment.center,
+                              //   children: [
+                              //     component2(
+                              //       'LOGIN',
+                              //       2.58,
+                              //       () {
+                              //         siginmethod();
+                              //         HapticFeedback.lightImpact();
+                              //         Fluttertoast.showToast(
+                              //             msg: 'Login button pressed');
+                              //       },
+                              //     ),
+                              //     SizedBox(width: size.width / 20),
+                              //     component2(
+                              //       'Forgotten password!',
+                              //       2.58,
+                              //       () {
+                              //         HapticFeedback.lightImpact();
+                              //         Fluttertoast.showToast(
+                              //             msg: 'Forgotten password button pressed');
+                              //       },
+                              //     ),
+                              //   ],
+                              // ),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-              ],
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),
       ),
     );
-  }
-
-  Future signupmethod() async {
-    // showDialog(
-    //     context: context,
-    //     builder: (context) => Center(
-    //           child: CircularProgressIndicator(),
-    //         ));
-    final isValid = formkey.currentState!.validate();
-    Get.to(StartQuiz());
-    if (!isValid) return;
-    // showDialog(
-    //     context: context,
-    //     builder: (context) => Center(
-    //           child: LinearProgressIndicator(),
-    //         ));
-
-    try {
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: emailcontroller.text.trim(),
-          password: passcontroller.text.trim());
-    } on FirebaseAuthException catch (e) {
-      print(e.toString());
-    }
   }
 
   Widget component2(String string, double width, VoidCallback voidCallback) {
